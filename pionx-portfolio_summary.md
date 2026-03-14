@@ -162,3 +162,94 @@ Date: March 13, 2026
 - `src/vite-env.d.ts`
 - `pionx-portfolio_summary.md`
 
+## Additional Project Pages Added Later In The Session
+
+### HeartSync Project Page
+
+- Added a dedicated `HeartSync` project page route.
+- Used the two app screenshots from `ref-code/heart-sync-img/`.
+- Used the product details from `Relationship Tracker Blueprint.md`.
+- Built a case-study style page with:
+  - animated hero
+  - screenshot parallax
+  - key features
+  - pricing/value positioning
+  - blueprint/development pipeline
+  - roadmap section
+- Removed the redundant `Back to portfolio` link and kept the `PionX` logo as the return path.
+- Added the real `heartsync.png` app icon to:
+  - the `Projects` dropdown
+  - the `Featured Projects` HeartSync card
+
+### Tap Tempo Project Page
+
+- Added a dedicated `Tap Tempo` project page route.
+- Used the three screenshots from `ref-code/tap-tempo/`.
+- Built a page consistent with the home page and HeartSync page:
+  - animated hero
+  - parallax phone mockup layout
+  - key feature cards
+  - product/system explanation
+  - interface interpretation section
+  - implementation notes section
+- Derived feature/content details from the screenshots, including:
+  - tap-to-detect BPM
+  - microphone listening mode
+  - tempo range labels
+  - history recall
+  - 20-300 BPM range / last lock / recent tap logic
+- Added a custom TypeScript module declaration for uppercase `.PNG` assets in `src/vite-env.d.ts`.
+
+### The Tip Project Page
+
+- Added a dedicated `The Tip` project page route.
+- Used the screenshot from `ref-code/the-tip/1.PNG`.
+- Built a page consistent with the other project pages:
+  - animated hero
+  - parallax screenshot/app-icon composition
+  - feature section
+  - product/use-case explanation
+  - flow/system explanation
+  - implementation notes section
+- Derived the page content directly from the screenshot:
+  - bill amount input
+  - people count stepper
+  - tip percentage presets
+  - custom tip option
+  - round-per-person toggle
+  - result cards for tip / total / per person
+  - copy action and calculate CTA
+
+## Additional Navigation / Featured Project Updates
+
+- Added a `Projects` dropdown in the floating menu with placeholder/project links for:
+  - `HeartSync`
+  - `Tap Tempo`
+  - `The Tip`
+- Fixed the hover gap so the dropdown does not disappear when moving the pointer into the submenu.
+- Updated `Featured Projects` so project cards can route to dedicated project pages.
+- Updated `Tap Tempo` description to reflect the BPM use case.
+- Added multi-badge support in the `Featured Projects` cards.
+- Updated project badges:
+  - `HeartSync` -> `Lifestyle` + `iOS`
+  - `Tap Tempo` -> `Music` + `iOS`
+  - `The Tip` -> `Utility` + `iOS`
+- Styled the `iOS` badge with a subtle gradient so it stands out from the niche/category badge.
+
+## Additional Icon / Asset Updates
+
+- Added and used the real `The Tip` app icon in:
+  - the `Projects` dropdown
+  - the `Featured Projects` card
+- Normalized dropdown icon presentation so app icons render with consistent sizing.
+- Normalized fallback emoji sizing in the tech stack.
+- Updated tech stack markers:
+  - `Xcode` -> `🔨`
+  - `AI/ML` -> `🤖`
+  - `APIs` -> `🔌`
+
+## Additional Debugging / Runtime Fixes
+
+- Fixed a blank white page issue caused by React type imports being treated as runtime imports.
+- Verified localhost responses after env and runtime fixes.
+- Rebuilt repeatedly after major routing/page/asset changes.
