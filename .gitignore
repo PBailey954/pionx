@@ -1,0 +1,11 @@
+node_modules
+dist
+.DS_Store
+.env.local
+.env.*.local
+ref-code/
+pionx-portfolio_summary.md
+pionx_portfolio-summary.md
+*.tsbuildinfo
+vite.config.js
+vite.config.d.ts
