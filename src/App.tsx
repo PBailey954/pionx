@@ -40,6 +40,7 @@ import type { FormEvent, ReactNode } from "react";
 import heartsyncIcon from "../ref-code/heart-sync-img/heartsync.png";
 import heartsyncDatesImage from "../ref-code/heart-sync-img/heartsync1.png";
 import heartsyncSettingsImage from "../ref-code/heart-sync-img/heart sync2.png";
+import pionxDevImage from "../ref-code/ref-img/pionx-dev.jpg";
 import tapTempoShot1 from "../ref-code/tap-tempo/1.PNG";
 import tapTempoShot2 from "../ref-code/tap-tempo/2.PNG";
 import tapTempoShot3 from "../ref-code/tap-tempo/3.PNG";
@@ -694,7 +695,7 @@ function HomePage({ pageLoaded, isDark }: { pageLoaded: boolean; isDark: boolean
             <div className="absolute -right-8 top-6 h-40 w-40 rounded-full bg-violet-600/18 blur-3xl" />
             <div className="relative overflow-hidden rounded-[1.7rem] border border-[var(--line-soft)]">
               <img
-                src="https://images.unsplash.com/photo-1653732212701-b729f0b08330?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjBkZXZlbG9wZXIlMjBoZWFkc2hvdCUyMHBvcnRyYWl0fGVufDF8fHx8MTc3MzE0OTUxMXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+                src={pionxDevImage}
                 alt="Developer portrait"
                 className="aspect-[0.94] w-full object-cover"
               />
