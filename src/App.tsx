@@ -1184,7 +1184,7 @@ function HeartSyncPage() {
             return (
               <Reveal key={item.title} className="card-panel heartsync-highlight-card rounded-[1.5rem] border p-6" delay={index * 110}>
                 <div className="flex items-start gap-4">
-                  <div className="mt-1 flex h-11 w-11 items-center justify-center rounded-2xl bg-violet-500/12 text-violet-200">
+                  <div className="mt-1 flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-2xl bg-violet-500/12 text-violet-200">
                     <Icon className="h-5 w-5" />
                   </div>
                   <div>
@@ -1407,7 +1407,7 @@ function TapTempoPage() {
             return (
               <Reveal key={item.title} className="card-panel taptempo-highlight-card rounded-[1.5rem] border p-6" delay={index * 110}>
                 <div className="flex items-start gap-4">
-                  <div className="mt-1 flex h-11 w-11 items-center justify-center rounded-2xl bg-cyan-400/10 text-cyan-200">
+                  <div className="mt-1 flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-2xl bg-cyan-400/10 text-cyan-200">
                     <Icon className="h-5 w-5" />
                   </div>
                   <div>
@@ -1641,7 +1641,7 @@ function TheTipPage() {
             return (
               <Reveal key={item.title} className="card-panel thetip-highlight-card rounded-[1.5rem] border p-6" delay={index * 110}>
                 <div className="flex items-start gap-4">
-                  <div className="mt-1 flex h-11 w-11 items-center justify-center rounded-2xl bg-cyan-400/10 text-cyan-200">
+                  <div className="mt-1 flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-2xl bg-cyan-400/10 text-cyan-200">
                     <Icon className="h-5 w-5" />
                   </div>
                   <div>
