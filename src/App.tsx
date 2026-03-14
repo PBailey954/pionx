@@ -40,10 +40,15 @@ import type { FormEvent, ReactNode } from "react";
 import heartsyncIcon from "../ref-code/heart-sync-img/heartsync.png";
 import heartsyncDatesImage from "../ref-code/heart-sync-img/heartsync1.png";
 import heartsyncSettingsImage from "../ref-code/heart-sync-img/heart sync2.png";
+import heartsyncStoryImage from "../ref-code/heart-sync-img/3.PNG";
+import heartsyncMemoriesImage from "../ref-code/heart-sync-img/4.PNG";
+import heartsyncAddMemoryImage from "../ref-code/heart-sync-img/5.PNG";
+import heartsyncThemesImage from "../ref-code/heart-sync-img/6.PNG";
 import pionxDevImage from "../ref-code/ref-img/pionx-dev.jpg";
 import tapTempoShot1 from "../ref-code/tap-tempo/1.PNG";
 import tapTempoShot2 from "../ref-code/tap-tempo/2.PNG";
 import tapTempoShot3 from "../ref-code/tap-tempo/3.PNG";
+import tapTempoIcon from "../ref-code/tap-tempo/tap-tempo_app-icon.PNG";
 import theTipShot1 from "../ref-code/the-tip/1.PNG";
 import theTipIcon from "../ref-code/the-tip/the-tip_app-icon.jpg";
 
@@ -69,6 +74,7 @@ const projects = [
       { label: "iOS", variant: "ios" },
     ],
     icon: Smartphone,
+    iconImage: tapTempoIcon,
     accentClass: "from-sky-600 to-blue-500",
     href: "/tap-tempo",
   },
@@ -160,7 +166,7 @@ const socialLinks = [
 
 const projectLinks = [
   { label: "HeartSync", href: "/heartsync", iconImage: heartsyncIcon },
-  { label: "Tap Tempo", href: "/tap-tempo" },
+  { label: "Tap Tempo", href: "/tap-tempo", iconImage: tapTempoIcon },
   { label: "The Tip", href: "/the-tip", iconImage: theTipIcon },
 ];
 
@@ -272,6 +278,39 @@ const theTipBuildPoints = [
   "Copy-ready result summary for quick sharing or payment apps",
 ];
 
+const faqEntries = [
+  {
+    question: "Which apps are part of PionX right now?",
+    answer:
+      "Right now the site highlights HeartSync, Tap Tempo, and The Tip. HeartSync is focused on relationship milestones and memories, Tap Tempo is a BPM detector for music, and The Tip is a fast tip-and-bill-splitting calculator.",
+    icon: "📱",
+  },
+  {
+    question: "Are these apps built for iPhone or for the web?",
+    answer:
+      "The featured products are positioned as iOS-first apps. The portfolio itself is web-based, but the case studies are centered on native mobile utility and lifestyle products.",
+    icon: "🍎",
+  },
+  {
+    question: "Will HeartSync include premium features?",
+    answer:
+      "Yes. The current HeartSync direction keeps the core tracker useful for free, while premium features expand into deeper themes, multiple trackers, sync, and shared partner-facing functionality.",
+    icon: "💖",
+  },
+  {
+    question: "Can Tap Tempo listen to audio, or do I have to tap manually?",
+    answer:
+      "Both are part of the concept. The product supports manual tap capture and a listening mode, so users can either tap with the beat or let the app listen for tempo directly.",
+    icon: "🎵",
+  },
+  {
+    question: "Does The Tip only calculate gratuity, or can it split the bill too?",
+    answer:
+      "It does both. The Tip is designed to calculate gratuity, total amount, and per-person cost, with controls for party size and optional round-per-person logic for cleaner shared payments.",
+    icon: "💸",
+  },
+];
+
 const heartSyncFeatures = [
   {
     title: "Multi-Format Counter",
@@ -327,7 +366,7 @@ const heartSyncBuildSteps = [
 ];
 
 type RevealDirection = "up" | "left" | "right";
-type PageKey = "home" | "heartsync" | "tap-tempo" | "the-tip";
+type PageKey = "home" | "heartsync" | "tap-tempo" | "the-tip" | "faq";
 
 const brandfetchClientId = import.meta.env.VITE_BRANDFETCH_CLIENT_ID;
 
@@ -342,6 +381,10 @@ function resolvePage(pathname: string): PageKey {
 
   if (pathname.startsWith("/the-tip")) {
     return "the-tip";
+  }
+
+  if (pathname.startsWith("/faq")) {
+    return "faq";
   }
 
   return "home";
@@ -516,6 +559,7 @@ function SiteHeader({
 
   const aboutHref = currentPage === "home" ? "#about" : "/#about";
   const contactHref = currentPage === "home" ? "#contact" : "/#contact";
+  const faqHref = "/faq";
 
   return (
     <header
@@ -570,6 +614,9 @@ function SiteHeader({
           </a>
           <a href={contactHref} className="transition hover:text-[var(--text-primary)]">
             Contact
+          </a>
+          <a href={faqHref} className="transition hover:text-[var(--text-primary)]">
+            FAQ
           </a>
         </nav>
 
@@ -939,15 +986,21 @@ function HeartSyncPage() {
           </Reveal>
 
           <div className="relative min-h-[44rem]">
-            <ParallaxLayer className="absolute left-0 top-12 z-10 w-[46%]" speed={0.12}>
+            <ParallaxLayer className="absolute left-0 top-12 z-20 w-[40%]" speed={0.12}>
+              <Reveal className="phone-shot phone-shot-primary rounded-[2.2rem] border p-3 shadow-[0_30px_90px_rgba(0,0,0,0.35)]">
+                <img src={heartsyncStoryImage} alt="HeartSync love story home screen" className="w-full rounded-[1.65rem] object-cover" />
+              </Reveal>
+            </ParallaxLayer>
+
+            <ParallaxLayer className="absolute left-[24%] top-28 z-10 w-[34%]" speed={0.08}>
               <Reveal className="phone-shot phone-shot-primary rounded-[2.2rem] border p-3 shadow-[0_30px_90px_rgba(0,0,0,0.35)]">
                 <img src={heartsyncDatesImage} alt="HeartSync dates screen" className="w-full rounded-[1.65rem] object-cover" />
               </Reveal>
             </ParallaxLayer>
 
-            <ParallaxLayer className="absolute right-0 top-0 w-[54%]" speed={-0.1}>
+            <ParallaxLayer className="absolute right-0 top-0 w-[40%]" speed={-0.1}>
               <Reveal delay={120} className="phone-shot phone-shot-secondary rounded-[2.2rem] border p-3 shadow-[0_30px_90px_rgba(0,0,0,0.32)]">
-                <img src={heartsyncSettingsImage} alt="HeartSync settings screen" className="w-full rounded-[1.65rem] object-cover" />
+                <img src={heartsyncThemesImage} alt="HeartSync themes screen" className="w-full rounded-[1.65rem] object-cover" />
               </Reveal>
             </ParallaxLayer>
           </div>
@@ -1002,10 +1055,82 @@ function HeartSyncPage() {
             <Reveal direction="left" delay={120}>
               <div className="relative rounded-[2rem] border border-pink-300/12 bg-[linear-gradient(160deg,rgba(244,114,182,0.08),rgba(17,24,39,0.52))] p-5 shadow-[0_24px_80px_rgba(0,0,0,0.28)]">
                 <div className="absolute inset-0 rounded-[2rem] bg-[radial-gradient(circle_at_top,rgba(244,114,182,0.12),transparent_42%)]" />
-                <img src={heartsyncDatesImage} alt="HeartSync milestone dashboard" className="relative w-full rounded-[1.55rem] object-cover" />
+                <img src={heartsyncMemoriesImage} alt="HeartSync memory timeline screen" className="relative w-full rounded-[1.55rem] object-cover" />
               </div>
             </Reveal>
           </ParallaxLayer>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-6xl px-6 py-24">
+        <div className="grid gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
+          <ParallaxLayer speed={-0.08}>
+            <Reveal direction="right">
+              <div className="grid gap-6 md:grid-cols-2">
+                <div className="relative rounded-[2rem] border border-pink-300/12 bg-[linear-gradient(180deg,rgba(244,114,182,0.08),rgba(17,24,39,0.38))] p-4 shadow-[0_24px_80px_rgba(0,0,0,0.24)]">
+                  <div className="absolute inset-0 rounded-[2rem] bg-[radial-gradient(circle_at_top,rgba(244,114,182,0.1),transparent_46%)]" />
+                  <img src={heartsyncAddMemoryImage} alt="HeartSync add memory screen" className="relative w-full rounded-[1.45rem] object-cover" />
+                </div>
+                <div className="relative rounded-[2rem] border border-violet-300/10 bg-[linear-gradient(180deg,rgba(91,33,182,0.12),rgba(17,24,39,0.38))] p-4 shadow-[0_24px_80px_rgba(0,0,0,0.24)]">
+                  <div className="absolute inset-0 rounded-[2rem] bg-[radial-gradient(circle_at_bottom,rgba(167,139,250,0.1),transparent_46%)]" />
+                  <img src={heartsyncThemesImage} alt="HeartSync theme selection screen" className="relative w-full rounded-[1.45rem] object-cover" />
+                </div>
+              </div>
+            </Reveal>
+          </ParallaxLayer>
+
+          <Reveal direction="left">
+            <p className="text-sm font-semibold uppercase tracking-[0.24em] text-pink-100/70">Memories and Customization</p>
+            <h2 className="mt-4 text-4xl font-semibold leading-tight tracking-[-0.04em] md:text-5xl">
+              More than a counter. Closer to a shared relationship archive.
+            </h2>
+            <p className="mt-6 text-lg leading-8 text-[var(--text-secondary)]">
+              The additional screens show where HeartSync gets more emotionally durable: a visual love story landing page, a timeline
+              of saved moments, a guided memory-entry flow, and theme options that keep the app feeling personal rather than generic.
+            </p>
+
+            <div className="mt-8 grid gap-4 sm:grid-cols-2">
+              <Reveal className="card-panel heartsync-highlight-card rounded-[1.35rem] border p-5" delay={120}>
+                <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-2xl bg-pink-500/12 text-pink-200">
+                  <Heart className="h-5 w-5" />
+                </div>
+                <h3 className="text-2xl font-semibold tracking-[-0.03em]">Love Story Dashboard</h3>
+                <p className="mt-3 text-base leading-7 text-[var(--text-secondary)]">
+                  A warmer home screen that combines partner identity, quotes, and live relationship length in a more intimate presentation.
+                </p>
+              </Reveal>
+
+              <Reveal className="card-panel heartsync-highlight-card rounded-[1.35rem] border p-5" delay={220}>
+                <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-2xl bg-violet-500/12 text-violet-200">
+                  <CalendarHeart className="h-5 w-5" />
+                </div>
+                <h3 className="text-2xl font-semibold tracking-[-0.03em]">Memory Timeline</h3>
+                <p className="mt-3 text-base leading-7 text-[var(--text-secondary)]">
+                  A scrollable archive of dates, photos, and romantic moments that makes the app feel alive beyond the anniversary counter.
+                </p>
+              </Reveal>
+
+              <Reveal className="card-panel heartsync-highlight-card rounded-[1.35rem] border p-5" delay={320}>
+                <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-2xl bg-pink-500/12 text-pink-200">
+                  <ImagePlus className="h-5 w-5" />
+                </div>
+                <h3 className="text-2xl font-semibold tracking-[-0.03em]">Add Memory Flow</h3>
+                <p className="mt-3 text-base leading-7 text-[var(--text-secondary)]">
+                  The memory composer supports photos, titles, and descriptions, turning the app into a capture tool rather than just a viewer.
+                </p>
+              </Reveal>
+
+              <Reveal className="card-panel heartsync-highlight-card rounded-[1.35rem] border p-5" delay={420}>
+                <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-2xl bg-violet-500/12 text-violet-200">
+                  <Palette className="h-5 w-5" />
+                </div>
+                <h3 className="text-2xl font-semibold tracking-[-0.03em]">Theme Library</h3>
+                <p className="mt-3 text-base leading-7 text-[var(--text-secondary)]">
+                  Included and premium palettes make personalization visible and reinforce the app’s premium-but-friendly positioning.
+                </p>
+              </Reveal>
+            </div>
+          </Reveal>
         </div>
       </section>
 
@@ -1551,6 +1676,108 @@ function TheTipPage() {
   );
 }
 
+function FAQPage() {
+  const [openIndex, setOpenIndex] = useState<number>(0);
+
+  return (
+    <main className="relative z-10 overflow-hidden">
+      <section className="relative mx-auto max-w-6xl px-6 pb-24 pt-36">
+        <div className="absolute left-8 top-24 h-72 w-72 rounded-full bg-violet-400/10 blur-3xl" />
+        <div className="absolute right-10 top-16 h-96 w-96 rounded-full bg-blue-400/8 blur-3xl" />
+
+        <div className="grid gap-14 lg:grid-cols-[0.92fr_1.08fr] lg:items-center">
+          <Reveal direction="right">
+            <div className="inline-flex items-center gap-2 rounded-full border border-violet-300/16 bg-violet-300/8 px-4 py-2 text-sm text-violet-100/80">
+              <span className="text-base">💬</span>
+              Quick answers about the apps
+            </div>
+            <h1 className="mt-8 max-w-3xl text-5xl font-semibold leading-[0.98] tracking-[-0.05em] md:text-7xl">
+              FAQ for people figuring out what PionX is building.
+            </h1>
+            <p className="mt-8 max-w-2xl text-lg leading-8 text-[var(--text-secondary)]">
+              A short set of answers covering what the apps are, how they are positioned, and what users can expect from the current product direction.
+            </p>
+          </Reveal>
+
+          <div className="relative min-h-[30rem]">
+            <ParallaxLayer className="absolute left-0 top-8 z-10 w-[46%]" speed={0.11}>
+              <Reveal className="card-panel faq-highlight-card rounded-[1.9rem] border p-6">
+                <div className="text-4xl">📱</div>
+                <h2 className="mt-5 text-2xl font-semibold tracking-[-0.03em]">App-first portfolio</h2>
+                <p className="mt-3 text-base leading-7 text-[var(--text-secondary)]">
+                  The site is product-led. The portfolio focuses on concrete app concepts and case-study pages instead of generic studio filler.
+                </p>
+              </Reveal>
+            </ParallaxLayer>
+
+            <ParallaxLayer className="absolute right-0 top-0 w-[48%]" speed={-0.08}>
+              <Reveal delay={120} className="card-panel faq-highlight-card rounded-[1.9rem] border p-6">
+                <div className="text-4xl">✨</div>
+                <h2 className="mt-5 text-2xl font-semibold tracking-[-0.03em]">Focused utilities</h2>
+                <p className="mt-3 text-base leading-7 text-[var(--text-secondary)]">
+                  Each app solves one narrow problem clearly, which makes the product pages easier to trust and easier to understand.
+                </p>
+              </Reveal>
+            </ParallaxLayer>
+
+            <ParallaxLayer className="absolute left-[22%] top-[52%] z-20 w-[38%]" speed={0.06}>
+              <Reveal delay={220} className="card-panel faq-highlight-card rounded-[1.8rem] border p-5">
+                <div className="text-3xl">🧠</div>
+                <h2 className="mt-4 text-xl font-semibold tracking-[-0.03em]">Real product context</h2>
+                <p className="mt-3 text-sm leading-6 text-[var(--text-secondary)]">
+                  The answers below are based on the actual featured apps, not placeholder startup copy.
+                </p>
+              </Reveal>
+            </ParallaxLayer>
+          </div>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-5xl px-6 pb-24 pt-12">
+        <Reveal className="mx-auto max-w-2xl text-center">
+          <h2 className="text-4xl font-semibold tracking-[-0.04em] md:text-5xl">Common Questions</h2>
+          <p className="mt-4 text-lg text-[var(--text-secondary)]">
+            Five answers a user would reasonably want before downloading, following, or reaching out.
+          </p>
+        </Reveal>
+
+        <div className="mt-14 space-y-4">
+          {faqEntries.map((item, index) => {
+            const isOpen = openIndex === index;
+
+            return (
+              <Reveal key={item.question} delay={index * 90}>
+                <div className={`card-panel faq-card rounded-[1.5rem] border p-2 ${isOpen ? "faq-card-open" : ""}`}>
+                  <button
+                    type="button"
+                    onClick={() => setOpenIndex(isOpen ? -1 : index)}
+                    className="flex w-full items-center justify-between gap-4 rounded-[1.2rem] px-4 py-4 text-left"
+                    aria-expanded={isOpen}
+                  >
+                    <div className="flex items-center gap-4">
+                      <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-violet-500/12 text-xl">
+                        <span aria-hidden="true">{item.icon}</span>
+                      </div>
+                      <h3 className="text-xl font-semibold tracking-[-0.03em] text-[var(--text-primary)]">{item.question}</h3>
+                    </div>
+                    <ChevronDown className={`h-5 w-5 flex-shrink-0 text-[var(--text-secondary)] transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`} />
+                  </button>
+
+                  <div className={`faq-answer px-4 ${isOpen ? "faq-answer-open" : ""}`}>
+                    <div className="pb-4 pl-[3.75rem] pr-12 text-base leading-7 text-[var(--text-secondary)]">
+                      {item.answer}
+                    </div>
+                  </div>
+                </div>
+              </Reveal>
+            );
+          })}
+        </div>
+      </section>
+    </main>
+  );
+}
+
 function GiftIcon() {
   return (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="h-5 w-5">
@@ -1612,6 +1839,8 @@ function App() {
           <TapTempoPage />
         ) : currentPage === "the-tip" ? (
           <TheTipPage />
+        ) : currentPage === "faq" ? (
+          <FAQPage />
         ) : (
           <HomePage pageLoaded={pageLoaded} isDark={isDark} />
         )}

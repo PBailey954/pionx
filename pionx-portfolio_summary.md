@@ -218,6 +218,28 @@ Date: March 13, 2026
   - custom tip option
   - round-per-person toggle
   - result cards for tip / total / per person
+
+## FAQ Branch Work
+
+- Created the `features/faq` branch for FAQ-specific changes.
+- Added a dedicated `/faq` page route to the portfolio.
+- Added an `FAQ` link to the floating site navigation.
+- Built an animated FAQ landing section with:
+  - intro badge
+  - large headline
+  - supporting copy
+  - parallax highlight cards
+- Added five product-focused FAQ entries covering:
+  - which apps PionX is building
+  - iPhone vs web positioning
+  - HeartSync premium direction
+  - Tap Tempo input modes
+  - The Tip bill-splitting support
+- Built an accordion interaction with:
+  - smooth expand/collapse animation
+  - icon/emojis for each question
+  - matching glass-card styling
+  - highlighted open state treatment
   - copy action and calculate CTA
 
 ## Additional Navigation / Featured Project Updates
