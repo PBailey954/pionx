@@ -38,20 +38,20 @@ import {
 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import type { FormEvent, ReactNode } from "react";
-import heartsyncIcon from "../ref-code/heart-sync-img/heartsync.png";
-import heartsyncDatesImage from "../ref-code/heart-sync-img/heartsync1.png";
-import heartsyncSettingsImage from "../ref-code/heart-sync-img/heart sync2.png";
-import heartsyncStoryImage from "../ref-code/heart-sync-img/3.PNG";
-import heartsyncMemoriesImage from "../ref-code/heart-sync-img/4.PNG";
-import heartsyncAddMemoryImage from "../ref-code/heart-sync-img/5.PNG";
-import heartsyncThemesImage from "../ref-code/heart-sync-img/6.PNG";
-import pionxDevImage from "../ref-code/ref-img/pionx-dev.jpg";
-import tapTempoShot1 from "../ref-code/tap-tempo/1.PNG";
-import tapTempoShot2 from "../ref-code/tap-tempo/2.PNG";
-import tapTempoShot3 from "../ref-code/tap-tempo/3.PNG";
-import tapTempoIcon from "../ref-code/tap-tempo/tap-tempo_app-icon.PNG";
-import theTipShot1 from "../ref-code/the-tip/1.PNG";
-import theTipIcon from "../ref-code/the-tip/the-tip_app-icon.jpg";
+import heartsyncIcon from "./assets/heartsync/heartsync-icon.png";
+import heartsyncDatesImage from "./assets/heartsync/heartsync-dates.png";
+import heartsyncSettingsImage from "./assets/heartsync/heartsync-settings.png";
+import heartsyncStoryImage from "./assets/heartsync/heartsync-story.PNG";
+import heartsyncMemoriesImage from "./assets/heartsync/heartsync-memories.PNG";
+import heartsyncAddMemoryImage from "./assets/heartsync/heartsync-add-memory.PNG";
+import heartsyncThemesImage from "./assets/heartsync/heartsync-themes.PNG";
+import pionxDevImage from "./assets/shared/pionx-dev.jpg";
+import tapTempoShot1 from "./assets/tap-tempo/tap-tempo-1.PNG";
+import tapTempoShot2 from "./assets/tap-tempo/tap-tempo-2.PNG";
+import tapTempoShot3 from "./assets/tap-tempo/tap-tempo-3.PNG";
+import tapTempoIcon from "./assets/tap-tempo/tap-tempo-app-icon.PNG";
+import theTipShot1 from "./assets/the-tip/the-tip-1.PNG";
+import theTipIcon from "./assets/the-tip/the-tip-app-icon.jpg";
 
 const projects = [
   {

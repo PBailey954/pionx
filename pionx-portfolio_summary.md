@@ -303,3 +303,13 @@ Date: March 13, 2026
   - only the gradient bottom border visually separates it
   - the floating menu remains in a stable position when the banner is dismissed
   - the vertical spacing is tighter and less cramped
+
+## Deployment Fix
+
+- Fixed Cloudflare Pages build failures caused by importing images from the gitignored `ref-code/` folder.
+- Copied the app-critical screenshots and icons into tracked source folders under:
+  - `src/assets/heartsync/`
+  - `src/assets/tap-tempo/`
+  - `src/assets/the-tip/`
+  - `src/assets/shared/`
+- Updated the site imports so production builds no longer depend on local-only reference assets.
