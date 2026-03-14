@@ -275,3 +275,31 @@ Date: March 13, 2026
 - Fixed a blank white page issue caused by React type imports being treated as runtime imports.
 - Verified localhost responses after env and runtime fixes.
 - Rebuilt repeatedly after major routing/page/asset changes.
+
+## Privacy Policy Update
+
+- Added a dedicated `/privacy-policy` page to the site.
+- Added a `Privacy Policy` link in the footer.
+- Wrote the privacy policy to match the current site setup:
+  - contact form submissions
+  - basic hosting/server logs
+  - no intentional ad tracking or marketing cookies at this time
+  - third-party link disclaimer
+  - privacy contact email
+
+## Announcement Banner Update
+
+- Added a first-visit announcement banner above the floating menu.
+- Banner text:
+  - `🚀 New: Apps are getting ready for deployment soon!`
+- Added a dismiss `X` button and persisted dismissal with `localStorage`.
+- Styled the banner with:
+  - same dark/glassy background language as the site
+  - multicolor bottom rule using purple, blue, red, orange, and green
+  - centered status text
+  - `Fira Code` at `14px`
+- Iterated the layout so:
+  - the bar stretches full-width
+  - only the gradient bottom border visually separates it
+  - the floating menu remains in a stable position when the banner is dismissed
+  - the vertical spacing is tighter and less cramped

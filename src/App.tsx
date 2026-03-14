@@ -34,6 +34,7 @@ import {
   Sun,
   Twitter,
   Users,
+  X,
 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import type { FormEvent, ReactNode } from "react";
@@ -366,7 +367,7 @@ const heartSyncBuildSteps = [
 ];
 
 type RevealDirection = "up" | "left" | "right";
-type PageKey = "home" | "heartsync" | "tap-tempo" | "the-tip" | "faq";
+type PageKey = "home" | "heartsync" | "tap-tempo" | "the-tip" | "faq" | "privacy-policy";
 
 const brandfetchClientId = import.meta.env.VITE_BRANDFETCH_CLIENT_ID;
 
@@ -385,6 +386,10 @@ function resolvePage(pathname: string): PageKey {
 
   if (pathname.startsWith("/faq")) {
     return "faq";
+  }
+
+  if (pathname.startsWith("/privacy-policy")) {
+    return "privacy-policy";
   }
 
   return "home";
@@ -533,12 +538,16 @@ function SiteHeader({
   pageLoaded,
   isDark,
   toggleAnimating,
+  announcementVisible,
+  onDismissAnnouncement,
   onToggleTheme,
 }: {
   currentPage: PageKey;
   pageLoaded: boolean;
   isDark: boolean;
   toggleAnimating: boolean;
+  announcementVisible: boolean;
+  onDismissAnnouncement: () => void;
   onToggleTheme: () => void;
 }) {
   const [projectsOpen, setProjectsOpen] = useState(false);
@@ -563,11 +572,36 @@ function SiteHeader({
 
   return (
     <header
-      className={`fixed left-1/2 top-3 z-40 w-[min(58rem,calc(100%-1.5rem))] -translate-x-1/2 transition-all duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)] md:top-5 md:w-[min(60rem,calc(100%-3rem))] ${
+      className={`fixed inset-x-0 top-0 z-40 transition-all duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
         pageLoaded ? "translate-y-0 opacity-100" : "-translate-y-8 opacity-0"
       }`}
     >
-      <div className="nav-wrap flex items-center justify-between rounded-[1.15rem] border px-4 py-3 md:px-5">
+      <div className="flex flex-col items-center gap-1 md:gap-1.5">
+        <div className="relative h-[50px] w-full md:h-[54px]" aria-hidden={announcementVisible ? undefined : "true"}>
+          {announcementVisible ? (
+            <div className="announcement-banner absolute inset-0 w-full overflow-hidden px-4 py-2.5 md:px-6 md:py-[0.75rem]">
+              <div className="mx-auto flex max-w-[72rem] items-center justify-center gap-4">
+                <p className="announcement-banner-text text-center leading-6 text-[var(--text-primary)]">
+                  <span aria-hidden="true" className="mr-2">
+                    🚀
+                  </span>
+                  New: Apps are getting ready for deployment soon!
+                </p>
+                <button
+                  type="button"
+                  onClick={onDismissAnnouncement}
+                  className="absolute right-4 top-1/2 inline-flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-full text-[var(--text-secondary)] transition hover:bg-[var(--surface-soft)] hover:text-[var(--text-primary)] md:right-6"
+                  aria-label="Dismiss announcement"
+                >
+                  <X className="h-4 w-4" />
+                </button>
+              </div>
+              <div className="announcement-banner-line absolute inset-x-0 bottom-0 h-[3px]" />
+            </div>
+          ) : null}
+        </div>
+
+        <div className="nav-wrap w-[min(58rem,calc(100%-1.5rem))] flex items-center justify-between rounded-[1.15rem] border px-4 py-3 md:w-[min(60rem,calc(100%-3rem))] md:px-5">
         <a
           href="/"
           className="bg-gradient-to-r from-blue-500 via-violet-500 to-cyan-400 bg-clip-text text-xl font-semibold text-transparent"
@@ -630,6 +664,7 @@ function SiteHeader({
         >
           {isDark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
         </button>
+      </div>
       </div>
     </header>
   );
@@ -1778,6 +1813,78 @@ function FAQPage() {
   );
 }
 
+function PrivacyPolicyPage() {
+  return (
+    <main className="relative z-10 overflow-hidden">
+      <section className="relative mx-auto max-w-5xl px-6 pb-16 pt-36">
+        <div className="absolute left-10 top-28 h-72 w-72 rounded-full bg-cyan-400/8 blur-3xl" />
+        <div className="absolute right-10 top-20 h-80 w-80 rounded-full bg-violet-400/8 blur-3xl" />
+
+        <Reveal className="max-w-3xl">
+          <div className="inline-flex items-center gap-2 rounded-full border border-blue-300/16 bg-blue-300/8 px-4 py-2 text-sm text-blue-100/80">
+            <span className="text-base">🔒</span>
+            Privacy Policy
+          </div>
+          <h1 className="mt-8 text-5xl font-semibold leading-[0.98] tracking-[-0.05em] md:text-7xl">How PionX handles site data.</h1>
+          <p className="mt-8 max-w-2xl text-lg leading-8 text-[var(--text-secondary)]">
+            This page explains what information this portfolio site may collect, how it is used, and what to expect when you use the
+            contact form or browse the site.
+          </p>
+          <p className="mt-4 text-sm text-[var(--text-secondary)]">Last updated: March 14, 2026</p>
+        </Reveal>
+      </section>
+
+      <section className="mx-auto max-w-5xl px-6 pb-24">
+        <div className="grid gap-6">
+          <Reveal className="card-panel rounded-[1.5rem] border p-6">
+            <h2 className="text-2xl font-semibold tracking-[-0.03em]">Information Collected</h2>
+            <p className="mt-4 text-base leading-7 text-[var(--text-secondary)]">
+              This site may collect information that you choose to provide directly, such as your name, email address, and message if
+              you submit the contact form. Basic technical information may also be processed by the hosting provider, such as IP
+              address, browser type, and server request logs.
+            </p>
+          </Reveal>
+
+          <Reveal className="card-panel rounded-[1.5rem] border p-6" delay={90}>
+            <h2 className="text-2xl font-semibold tracking-[-0.03em]">How Information Is Used</h2>
+            <p className="mt-4 text-base leading-7 text-[var(--text-secondary)]">
+              Contact form information is used only to review and respond to inquiries. Technical information is used to serve the
+              site, maintain reliability, and monitor basic operational security.
+            </p>
+          </Reveal>
+
+          <Reveal className="card-panel rounded-[1.5rem] border p-6" delay={180}>
+            <h2 className="text-2xl font-semibold tracking-[-0.03em]">Cookies and Tracking</h2>
+            <p className="mt-4 text-base leading-7 text-[var(--text-secondary)]">
+              This site is not intentionally using advertising cookies or marketing trackers at this time. If analytics, embedded
+              third-party tools, or other tracking services are added later, this policy should be updated to reflect that change.
+            </p>
+          </Reveal>
+
+          <Reveal className="card-panel rounded-[1.5rem] border p-6" delay={270}>
+            <h2 className="text-2xl font-semibold tracking-[-0.03em]">Third-Party Services</h2>
+            <p className="mt-4 text-base leading-7 text-[var(--text-secondary)]">
+              This site may link to third-party platforms such as GitHub, X, LinkedIn, or email providers. Those services operate
+              under their own privacy policies and terms.
+            </p>
+          </Reveal>
+
+          <Reveal className="card-panel rounded-[1.5rem] border p-6" delay={360}>
+            <h2 className="text-2xl font-semibold tracking-[-0.03em]">Contact</h2>
+            <p className="mt-4 text-base leading-7 text-[var(--text-secondary)]">
+              If you have privacy-related questions about this site, you can reach out through the contact section or by email at{" "}
+              <a href="mailto:hello@pionx.dev" className="text-[var(--text-primary)] underline decoration-[var(--line-strong)] underline-offset-4">
+                hello@pionx.dev
+              </a>
+              .
+            </p>
+          </Reveal>
+        </div>
+      </section>
+    </main>
+  );
+}
+
 function GiftIcon() {
   return (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="h-5 w-5">
@@ -1794,6 +1901,7 @@ function App() {
   const [isDark, setIsDark] = useState(true);
   const [pageLoaded, setPageLoaded] = useState(false);
   const [toggleAnimating, setToggleAnimating] = useState(false);
+  const [announcementVisible, setAnnouncementVisible] = useState(false);
   const [currentPage, setCurrentPage] = useState<PageKey>(() => resolvePage(window.location.pathname));
 
   useEffect(() => {
@@ -1813,10 +1921,20 @@ function App() {
     return () => window.removeEventListener("popstate", handlePopState);
   }, []);
 
+  useEffect(() => {
+    const dismissed = window.localStorage.getItem("pionx-site-announcement-dismissed");
+    setAnnouncementVisible(dismissed !== "true");
+  }, []);
+
   const handleToggleTheme = () => {
     setToggleAnimating(true);
     setIsDark((current) => !current);
     window.setTimeout(() => setToggleAnimating(false), 260);
+  };
+
+  const handleDismissAnnouncement = () => {
+    setAnnouncementVisible(false);
+    window.localStorage.setItem("pionx-site-announcement-dismissed", "true");
   };
 
   return (
@@ -1830,6 +1948,8 @@ function App() {
           pageLoaded={pageLoaded}
           isDark={isDark}
           toggleAnimating={toggleAnimating}
+          announcementVisible={announcementVisible}
+          onDismissAnnouncement={handleDismissAnnouncement}
           onToggleTheme={handleToggleTheme}
         />
 
@@ -1841,6 +1961,8 @@ function App() {
           <TheTipPage />
         ) : currentPage === "faq" ? (
           <FAQPage />
+        ) : currentPage === "privacy-policy" ? (
+          <PrivacyPolicyPage />
         ) : (
           <HomePage pageLoaded={pageLoaded} isDark={isDark} />
         )}
@@ -1853,7 +1975,12 @@ function App() {
               </span>{" "}
               © 2026 All rights reserved
             </p>
-            <p>Crafted with ❤️ for the future</p>
+            <div className="flex flex-col items-center gap-2 md:items-end">
+              <p>Crafted with ❤️ for the future</p>
+              <a href="/privacy-policy" className="transition hover:text-[var(--text-primary)]">
+                Privacy Policy
+              </a>
+            </div>
           </div>
         </footer>
       </div>
