@@ -49,7 +49,7 @@ import pionxDevImage from "./assets/shared/pionx-dev.jpg";
 import tapTempoShot1 from "./assets/tap-tempo/tap-tempo-1.PNG";
 import tapTempoShot2 from "./assets/tap-tempo/tap-tempo-2.PNG";
 import tapTempoShot3 from "./assets/tap-tempo/tap-tempo-3.PNG";
-import tapTempoIcon from "./assets/tap-tempo/tap-tempo-app-icon.PNG";
+import tapTempoIcon from "./assets/tap-tempo/appicon.png";
 import theTipShot1 from "./assets/the-tip/the-tip-1.PNG";
 import theTipIcon from "./assets/the-tip/the-tip-app-icon.jpg";
 
@@ -76,7 +76,7 @@ const projects = [
     ],
     icon: Smartphone,
     iconImage: tapTempoIcon,
-    accentClass: "from-sky-600 to-blue-500",
+    accentClass: "from-lime-400 to-lime-600",
     href: "/tap-tempo",
   },
   {
@@ -1284,14 +1284,19 @@ function TapTempoPage() {
   return (
     <main className="relative z-10 overflow-hidden">
       <section className="relative mx-auto max-w-6xl px-6 pb-24 pt-36">
-        <div className="absolute left-16 top-28 h-80 w-80 rounded-full bg-emerald-400/10 blur-3xl" />
-        <div className="absolute right-12 top-20 h-96 w-96 rounded-full bg-cyan-400/8 blur-3xl" />
+        <div className="absolute left-16 top-28 h-80 w-80 rounded-full bg-lime-300/10 blur-3xl" />
+        <div className="absolute right-12 top-20 h-96 w-96 rounded-full bg-lime-400/8 blur-3xl" />
 
         <div className="grid gap-14 lg:grid-cols-[0.94fr_1.06fr] lg:items-center">
           <Reveal direction="right">
-            <div className="inline-flex items-center gap-2 rounded-full border border-emerald-300/16 bg-emerald-300/8 px-4 py-2 text-sm text-emerald-100/80">
-              <span className="text-base">🎵</span>
-              BPM detector / iOS utility
+            <div className="inline-flex items-center gap-3 rounded-full border border-lime-300/16 bg-lime-300/8 px-3 py-2 text-sm text-lime-100/85 shadow-[0_16px_40px_rgba(132,204,22,0.12)]">
+              <span className="flex h-10 w-10 items-center justify-center overflow-hidden rounded-full border border-lime-300/20 bg-black/50 p-1">
+                <img src={tapTempoIcon} alt="Tap Tempo app icon" className="h-full w-full rounded-full object-cover" />
+              </span>
+              <span className="flex flex-col text-left leading-tight">
+                <span className="text-[0.65rem] font-semibold uppercase tracking-[0.22em] text-lime-200/70">Tap Tempo</span>
+                <span>BPM detector / iOS utility</span>
+              </span>
             </div>
             <h1 className="mt-8 max-w-3xl text-5xl font-semibold leading-[0.98] tracking-[-0.05em] md:text-7xl">
               Tap Tempo turns rhythm into a clean BPM reading instantly.
@@ -1351,7 +1356,7 @@ function TapTempoPage() {
 
             return (
               <Reveal key={feature.title} className="card-panel taptempo-feature-card rounded-[1.45rem] border p-6" delay={index * 110}>
-                <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-emerald-400/12 text-emerald-200">
+                <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-lime-300/12 text-lime-100">
                   <Icon className="h-5 w-5" />
                 </div>
                 <h3 className="text-2xl font-semibold tracking-[-0.03em]">{feature.title}</h3>
@@ -1366,7 +1371,7 @@ function TapTempoPage() {
         <div className="grid gap-10 lg:grid-cols-[1.02fr_0.98fr] lg:items-center">
           <Reveal direction="right">
             <div className="card-panel taptempo-story-card rounded-[2rem] border p-8">
-              <p className="text-sm font-semibold uppercase tracking-[0.24em] text-emerald-100/70">Product Use Case</p>
+              <p className="text-sm font-semibold uppercase tracking-[0.24em] text-lime-100/70">Product Use Case</p>
               <h2 className="mt-4 text-4xl font-semibold leading-tight tracking-[-0.04em] md:text-5xl">
                 Built for musicians, producers, and anyone trying to catch a groove.
               </h2>
@@ -1383,8 +1388,8 @@ function TapTempoPage() {
 
           <ParallaxLayer speed={0.08}>
             <Reveal direction="left" delay={120}>
-              <div className="relative rounded-[2rem] border border-emerald-300/12 bg-[linear-gradient(160deg,rgba(16,185,129,0.08),rgba(17,24,39,0.52))] p-5 shadow-[0_24px_80px_rgba(0,0,0,0.28)]">
-                <div className="absolute inset-0 rounded-[2rem] bg-[radial-gradient(circle_at_top,rgba(52,211,153,0.12),transparent_42%)]" />
+              <div className="relative rounded-[2rem] border border-lime-300/12 bg-[linear-gradient(160deg,rgba(163,230,53,0.14),rgba(2,6,3,0.82))] p-5 shadow-[0_24px_80px_rgba(0,0,0,0.28)]">
+                <div className="absolute inset-0 rounded-[2rem] bg-[radial-gradient(circle_at_top,rgba(190,242,100,0.16),transparent_42%)]" />
                 <img src={tapTempoShot2} alt="Tap Tempo microphone listening mode" className="relative w-full rounded-[1.55rem] object-cover" />
               </div>
             </Reveal>
@@ -1407,7 +1412,7 @@ function TapTempoPage() {
             return (
               <Reveal key={item.title} className="card-panel taptempo-highlight-card rounded-[1.5rem] border p-6" delay={index * 110}>
                 <div className="flex items-start gap-4">
-                  <div className="mt-1 flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-2xl bg-cyan-400/10 text-cyan-200">
+                  <div className="mt-1 flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-2xl bg-lime-300/12 text-lime-100">
                     <Icon className="h-5 w-5" />
                   </div>
                   <div>
@@ -1425,15 +1430,15 @@ function TapTempoPage() {
         <div className="grid gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
           <ParallaxLayer speed={-0.09}>
             <Reveal direction="right">
-              <div className="relative rounded-[2rem] border border-cyan-300/10 bg-[linear-gradient(180deg,rgba(8,145,178,0.1),rgba(17,24,39,0.38))] p-5 shadow-[0_24px_80px_rgba(0,0,0,0.28)]">
-                <div className="absolute inset-0 rounded-[2rem] bg-[radial-gradient(circle_at_bottom,rgba(45,212,191,0.1),transparent_45%)]" />
+              <div className="relative rounded-[2rem] border border-lime-300/12 bg-[linear-gradient(180deg,rgba(132,204,22,0.14),rgba(3,7,5,0.58))] p-5 shadow-[0_24px_80px_rgba(0,0,0,0.28)]">
+                <div className="absolute inset-0 rounded-[2rem] bg-[radial-gradient(circle_at_bottom,rgba(163,230,53,0.14),transparent_45%)]" />
                 <img src={tapTempoShot3} alt="Tap Tempo BPM history screen" className="relative w-full rounded-[1.55rem] object-cover" />
               </div>
             </Reveal>
           </ParallaxLayer>
 
           <Reveal direction="left">
-            <p className="text-sm font-semibold uppercase tracking-[0.24em] text-emerald-100/70">Experience Notes</p>
+            <p className="text-sm font-semibold uppercase tracking-[0.24em] text-lime-100/70">Experience Notes</p>
             <h2 className="mt-4 text-4xl font-semibold leading-tight tracking-[-0.04em] md:text-5xl">
               A utility app that still feels composed.
             </h2>
@@ -1446,7 +1451,7 @@ function TapTempoPage() {
               {tapTempoBuildPoints.map((point, index) => (
                 <Reveal key={point} className="card-panel taptempo-step-card rounded-[1.3rem] border p-4" delay={160 + index * 90}>
                   <div className="flex items-start gap-4">
-                    <div className="flex h-9 w-9 items-center justify-center rounded-full bg-emerald-400/14 text-sm font-semibold text-emerald-100">
+                    <div className="flex h-9 w-9 items-center justify-center rounded-full bg-lime-300/14 text-sm font-semibold text-lime-100">
                       {index + 1}
                     </div>
                     <p className="text-base leading-7 text-[var(--text-secondary)]">{point}</p>
@@ -1468,7 +1473,7 @@ function TapTempoPage() {
 
         <div className="mt-14 grid gap-6 md:grid-cols-3">
           <Reveal className="card-panel taptempo-feature-card rounded-[1.45rem] border p-6">
-            <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-emerald-400/12 text-emerald-200">
+            <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-lime-300/12 text-lime-100">
               <span className="text-lg">🎧</span>
             </div>
             <h3 className="text-2xl font-semibold tracking-[-0.03em]">Hands-Free Mode</h3>
@@ -1478,7 +1483,7 @@ function TapTempoPage() {
           </Reveal>
 
           <Reveal className="card-panel taptempo-feature-card rounded-[1.45rem] border p-6" delay={110}>
-            <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-emerald-400/12 text-emerald-200">
+            <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-lime-300/12 text-lime-100">
               <span className="text-lg">🎼</span>
             </div>
             <h3 className="text-2xl font-semibold tracking-[-0.03em]">Readable Tempo Ranges</h3>
@@ -1488,7 +1493,7 @@ function TapTempoPage() {
           </Reveal>
 
           <Reveal className="card-panel taptempo-feature-card rounded-[1.45rem] border p-6" delay={220}>
-            <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-emerald-400/12 text-emerald-200">
+            <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-lime-300/12 text-lime-100">
               <span className="text-lg">🧠</span>
             </div>
             <h3 className="text-2xl font-semibold tracking-[-0.03em]">Smarter Session Recall</h3>
@@ -1937,9 +1942,13 @@ function App() {
     window.localStorage.setItem("pionx-site-announcement-dismissed", "true");
   };
 
+  const shellClassName = `site-shell min-h-screen bg-[var(--page-bg)] text-[var(--text-primary)]${
+    currentPage === "tap-tempo" ? " page-tap-tempo" : ""
+  }`;
+
   return (
     <div className={isDark ? "theme-dark" : "theme-light"}>
-      <div className="site-shell min-h-screen bg-[var(--page-bg)] text-[var(--text-primary)]">
+      <div className={shellClassName}>
         <div className="hero-grid pointer-events-none absolute inset-x-0 top-0 h-[54rem]" />
         <div className="hero-glow pointer-events-none absolute inset-x-0 top-0 h-[54rem]" />
 

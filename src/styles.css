@@ -76,6 +76,37 @@
       var(--page-bg);
   }
 
+  .page-tap-tempo {
+    --text-primary: #f1f8de;
+    --text-secondary: #9ca78d;
+    --surface-soft: rgba(190, 242, 100, 0.07);
+    --surface-card: rgba(9, 12, 7, 0.82);
+    --surface-hover: rgba(190, 242, 100, 0.11);
+    --line-soft: rgba(190, 242, 100, 0.1);
+    --line-strong: rgba(190, 242, 100, 0.18);
+    --shadow-accent: 0 18px 48px rgba(132, 204, 22, 0.28);
+    background:
+      radial-gradient(circle at 18% 16%, rgba(163, 230, 53, 0.1), transparent 26%),
+      radial-gradient(circle at 84% 14%, rgba(190, 242, 100, 0.08), transparent 22%),
+      radial-gradient(circle at 50% 100%, rgba(101, 163, 13, 0.08), transparent 28%),
+      linear-gradient(180deg, rgba(163, 230, 53, 0.02) 0%, transparent 28%),
+      #040507;
+  }
+
+  .page-tap-tempo .hero-grid {
+    background-image:
+      linear-gradient(to right, rgba(190, 242, 100, 0.07) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(190, 242, 100, 0.07) 1px, transparent 1px);
+    opacity: 0.7;
+  }
+
+  .page-tap-tempo .hero-glow {
+    background:
+      radial-gradient(circle at 50% 26%, rgba(163, 230, 53, 0.16), transparent 20%),
+      radial-gradient(circle at 12% 16%, rgba(132, 204, 22, 0.12), transparent 28%),
+      radial-gradient(circle at 86% 10%, rgba(190, 242, 100, 0.08), transparent 24%);
+  }
+
   .hero-grid {
     background-image:
       linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
@@ -98,6 +129,13 @@
     backdrop-filter: blur(14px);
   }
 
+  .page-tap-tempo .nav-wrap {
+    border-color: rgba(163, 230, 53, 0.12);
+    box-shadow:
+      0 10px 30px rgba(0, 0, 0, 0.26),
+      0 0 0 1px rgba(190, 242, 100, 0.04) inset;
+  }
+
   .announcement-banner {
     background: color-mix(in srgb, var(--surface-card) 92%, transparent);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.14);
@@ -118,6 +156,10 @@
       rgba(249, 115, 22, 0.95) 72%,
       rgba(34, 197, 94, 0.95) 100%
     );
+  }
+
+  .page-tap-tempo .announcement-banner-line {
+    background: linear-gradient(90deg, rgba(217, 249, 157, 0.95) 0%, rgba(163, 230, 53, 0.95) 48%, rgba(101, 163, 13, 0.95) 100%);
   }
 
   .theme-toggle {
@@ -166,6 +208,10 @@
     transform: translateX(2px);
   }
 
+  .page-tap-tempo .menu-dropdown-item:hover {
+    background: rgba(163, 230, 53, 0.12);
+  }
+
   .project-menu-icon,
   .project-card-icon {
     display: block;
@@ -190,6 +236,14 @@
     background: color-mix(in srgb, var(--surface-card) 96%, transparent);
     border-color: var(--line-soft);
     box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.01) inset;
+  }
+
+  .page-tap-tempo .card-panel {
+    background: color-mix(in srgb, var(--surface-card) 93%, rgba(163, 230, 53, 0.08));
+    border-color: rgba(190, 242, 100, 0.08);
+    box-shadow:
+      0 0 0 1px rgba(190, 242, 100, 0.04) inset,
+      0 24px 60px rgba(0, 0, 0, 0.16);
   }
 
   .project-card,
@@ -233,6 +287,11 @@
     background: color-mix(in srgb, var(--surface-card) 92%, transparent);
     border-color: rgba(255, 255, 255, 0.08);
     backdrop-filter: blur(12px);
+  }
+
+  .page-tap-tempo .phone-shot {
+    background: color-mix(in srgb, var(--surface-card) 90%, rgba(163, 230, 53, 0.07));
+    border-color: rgba(190, 242, 100, 0.12);
   }
 
   .phone-shot-primary {
@@ -297,14 +356,14 @@
 
   .taptempo-shot-primary {
     box-shadow:
-      0 0 0 1px rgba(52, 211, 153, 0.1) inset,
+      0 0 0 1px rgba(190, 242, 100, 0.14) inset,
       0 30px 90px rgba(8, 8, 16, 0.42);
   }
 
   .taptempo-shot-secondary,
   .taptempo-shot-tertiary {
     box-shadow:
-      0 0 0 1px rgba(34, 211, 238, 0.08) inset,
+      0 0 0 1px rgba(163, 230, 53, 0.1) inset,
       0 28px 82px rgba(8, 8, 16, 0.34);
   }
 
@@ -323,10 +382,10 @@
   .taptempo-highlight-card:hover,
   .taptempo-story-card:hover,
   .taptempo-step-card:hover {
-    border-color: rgba(52, 211, 153, 0.18);
+    border-color: rgba(190, 242, 100, 0.22);
     box-shadow:
-      0 0 0 1px rgba(52, 211, 153, 0.08) inset,
-      0 0 32px rgba(16, 185, 129, 0.08);
+      0 0 0 1px rgba(190, 242, 100, 0.1) inset,
+      0 0 40px rgba(132, 204, 22, 0.1);
   }
 
   .thetip-shot-primary {
@@ -419,6 +478,12 @@
     color: #f9fafb;
     background: linear-gradient(90deg, #3b82f6 0%, #7c3aed 100%);
     box-shadow: var(--shadow-accent);
+  }
+
+  .page-tap-tempo .btn-primary {
+    color: #081106;
+    background: linear-gradient(90deg, #d9f99d 0%, #a3e635 48%, #65a30d 100%);
+    box-shadow: 0 18px 48px rgba(132, 204, 22, 0.28);
   }
 
   .btn-primary:hover {
