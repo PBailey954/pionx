@@ -159,7 +159,7 @@ const processSteps = [
 ];
 
 const socialLinks = [
-  { label: "Email", href: "mailto:hello@pionx.dev", icon: Mail },
+  { label: "Email", href: "mailto:thenextcompanyllc@gmail.com", icon: Mail },
   { label: "GitHub", href: "https://github.com/pionx", icon: Github, domain: "github.com" },
   { label: "Twitter", href: "https://twitter.com/pionx", icon: Twitter, domain: "x.com" },
   { label: "LinkedIn", href: "https://linkedin.com/in/pionx", icon: Linkedin, domain: "linkedin.com" },
@@ -1878,8 +1878,8 @@ function PrivacyPolicyPage() {
             <h2 className="text-2xl font-semibold tracking-[-0.03em]">Contact</h2>
             <p className="mt-4 text-base leading-7 text-[var(--text-secondary)]">
               If you have privacy-related questions about this site, you can reach out through the contact section or by email at{" "}
-              <a href="mailto:hello@pionx.dev" className="text-[var(--text-primary)] underline decoration-[var(--line-strong)] underline-offset-4">
-                hello@pionx.dev
+              <a href="mailto:thenextcompanyllc@gmail.com" className="text-[var(--text-primary)] underline decoration-[var(--line-strong)] underline-offset-4">
+                thenextcompanyllc@gmail.com
               </a>
               .
             </p>
