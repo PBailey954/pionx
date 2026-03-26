@@ -893,11 +893,36 @@ function HomePage({ pageLoaded, isDark }: { pageLoaded: boolean; isDark: boolean
 }
 
 function ContactPanel({ isDark }: { isDark: boolean }) {
-  const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setSubmitted(true);
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+
+    formData.append("_subject", "New PionX contact form message");
+    formData.append("_captcha", "false");
+
+    setStatus("submitting");
+
+    try {
+      const response = await fetch("https://formsubmit.co/ajax/thenextcompanyllc@gmail.com", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+        },
+        body: formData,
+      });
+
+      if (!response.ok) {
+        throw new Error("Form submission failed");
+      }
+
+      form.reset();
+      setStatus("success");
+    } catch {
+      setStatus("error");
+    }
   };
 
   return (
@@ -906,7 +931,7 @@ function ContactPanel({ isDark }: { isDark: boolean }) {
         <form onSubmit={handleSubmit} className="space-y-5">
           <label className="block">
             <span className="mb-2 block text-sm font-medium text-[var(--text-primary)]">Name</span>
-            <input name="name" placeholder="Your name" className="input-control h-11 w-full rounded-xl border px-4 text-sm outline-none transition" />
+            <input name="name" required placeholder="Your name" className="input-control h-11 w-full rounded-xl border px-4 text-sm outline-none transition" />
           </label>
 
           <label className="block">
@@ -914,6 +939,7 @@ function ContactPanel({ isDark }: { isDark: boolean }) {
             <input
               name="email"
               type="email"
+              required
               placeholder="your.email@example.com"
               className="input-control h-11 w-full rounded-xl border px-4 text-sm outline-none transition"
             />
@@ -923,18 +949,26 @@ function ContactPanel({ isDark }: { isDark: boolean }) {
             <span className="mb-2 block text-sm font-medium text-[var(--text-primary)]">Message</span>
             <textarea
               name="message"
+              required
               placeholder="Tell me about your project..."
               className="input-control min-h-36 w-full rounded-[1rem] border px-4 py-3 text-sm outline-none transition"
             />
           </label>
 
-          <button type="submit" className="btn-primary inline-flex w-full items-center justify-center gap-2 rounded-xl px-7 py-3.5 text-sm font-medium">
-            Send Message
+          <button
+            type="submit"
+            disabled={status === "submitting"}
+            className="btn-primary inline-flex w-full items-center justify-center gap-2 rounded-xl px-7 py-3.5 text-sm font-medium disabled:cursor-not-allowed disabled:opacity-70"
+          >
+            {status === "submitting" ? "Sending..." : "Send Message"}
             <Send className="h-4 w-4" />
           </button>
 
           <p className="text-sm text-[var(--text-secondary)]">
-            {submitted ? "Form captured locally. Add delivery wiring next." : "Form currently stores no backend submission."}
+            {status === "success" && "Message sent successfully."}
+            {status === "error" && "Message failed to send. Please email thenextcompanyllc@gmail.com directly."}
+            {status === "idle" && "Messages are delivered to thenextcompanyllc@gmail.com."}
+            {status === "submitting" && "Submitting your message..."}
           </p>
         </form>
       </Reveal>
@@ -1835,7 +1869,7 @@ function PrivacyPolicyPage() {
             This page explains what information this portfolio site may collect, how it is used, and what to expect when you use the
             contact form or browse the site.
           </p>
-          <p className="mt-4 text-sm text-[var(--text-secondary)]">Last updated: March 14, 2026</p>
+          <p className="mt-4 text-sm text-[var(--text-secondary)]">Last updated: March 25, 2026</p>
         </Reveal>
       </section>
 
@@ -1845,16 +1879,18 @@ function PrivacyPolicyPage() {
             <h2 className="text-2xl font-semibold tracking-[-0.03em]">Information Collected</h2>
             <p className="mt-4 text-base leading-7 text-[var(--text-secondary)]">
               This site may collect information that you choose to provide directly, such as your name, email address, and message if
-              you submit the contact form. Basic technical information may also be processed by the hosting provider, such as IP
-              address, browser type, and server request logs.
+              you submit the contact form. Contact form submissions are relayed through FormSubmit before being delivered by email.
+              Basic technical information may also be processed by the hosting provider, such as IP address, browser type, and server
+              request logs.
             </p>
           </Reveal>
 
           <Reveal className="card-panel rounded-[1.5rem] border p-6" delay={90}>
             <h2 className="text-2xl font-semibold tracking-[-0.03em]">How Information Is Used</h2>
             <p className="mt-4 text-base leading-7 text-[var(--text-secondary)]">
-              Contact form information is used only to review and respond to inquiries. Technical information is used to serve the
-              site, maintain reliability, and monitor basic operational security.
+              Contact form information is used only to review and respond to inquiries. Form submissions are processed by the email
+              relay used for delivery. Technical information is used to serve the site, maintain reliability, and monitor basic
+              operational security.
             </p>
           </Reveal>
 
