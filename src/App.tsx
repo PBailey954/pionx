@@ -1,4 +1,5 @@
 import {
+  Activity,
   Calculator,
   AudioLines,
   ArrowRight,
@@ -12,6 +13,7 @@ import {
   Code2,
   Coins,
   Copy,
+  Dumbbell,
   Gem,
   History,
   Github,
@@ -32,6 +34,9 @@ import {
   Smartphone,
   Sparkles,
   Sun,
+  Target,
+  TimerReset,
+  TrendingUp,
   Twitter,
   Users,
   X,
@@ -50,6 +55,12 @@ import tapTempoShot1 from "./assets/tap-tempo/tap-tempo-1.PNG";
 import tapTempoShot2 from "./assets/tap-tempo/tap-tempo-2.PNG";
 import tapTempoShot3 from "./assets/tap-tempo/tap-tempo-3.PNG";
 import tapTempoIcon from "./assets/tap-tempo/appicon.png";
+import repflowShot1 from "./assets/repflow/IMG_6704.PNG";
+import repflowShot2 from "./assets/repflow/IMG_6705.PNG";
+import repflowShot3 from "./assets/repflow/IMG_6707.PNG";
+import repflowShot4 from "./assets/repflow/IMG_6708.PNG";
+import repflowShot5 from "./assets/repflow/IMG_6709.PNG";
+import repflowIcon from "./assets/repflow/Appicon.png";
 import theTipShot1 from "./assets/the-tip/the-tip-1.PNG";
 import theTipIcon from "./assets/the-tip/the-tip-app-icon.jpg";
 
@@ -66,6 +77,19 @@ const projects = [
     iconImage: heartsyncIcon,
     accentClass: "from-pink-500 to-violet-500",
     href: "/heartsync",
+  },
+  {
+    name: "Repflow",
+    description:
+      "A strength-training tracker designed to make workouts easier to run, with structured session logging, rep tracking, and clearer progress visibility.",
+    badges: [
+      { label: "Fitness", variant: "default" },
+      { label: "iOS", variant: "ios" },
+    ],
+    icon: Dumbbell,
+    iconImage: repflowIcon,
+    accentClass: "from-orange-400 to-rose-500",
+    href: "/repflow",
   },
   {
     name: "Tap Tempo",
@@ -167,8 +191,63 @@ const socialLinks = [
 
 const projectLinks = [
   { label: "HeartSync", href: "/heartsync", iconImage: heartsyncIcon },
+  { label: "Repflow", href: "/repflow", iconImage: repflowIcon },
   { label: "Tap Tempo", href: "/tap-tempo", iconImage: tapTempoIcon },
   { label: "The Tip", href: "/the-tip", iconImage: theTipIcon },
+];
+
+const repflowFeatures = [
+  {
+    title: "Structured Workout Logging",
+    description: "Exercises, sets, and rep counts are organized into a flow that keeps the current lift readable while the session is in progress.",
+    icon: Dumbbell,
+  },
+  {
+    title: "Progress Visibility",
+    description: "Performance data is surfaced in a way that helps users see whether they are adding reps, improving consistency, or pushing more volume over time.",
+    icon: TrendingUp,
+  },
+  {
+    title: "Focused Session Dashboard",
+    description: "The interface appears built around the active workout, reducing friction between checking the plan, logging the next set, and reviewing what is complete.",
+    icon: Activity,
+  },
+  {
+    title: "Rest And Repeat Flow",
+    description: "A workout app lives or dies by pacing. Repflow is positioned around moving quickly from one set to the next without losing context.",
+    icon: TimerReset,
+  },
+];
+
+const repflowHighlights = [
+  {
+    title: "Built for consistency",
+    text: "Repflow is framed as a daily-use training product, not a one-off workout timer. The value comes from giving repeat sessions a cleaner rhythm and a clearer record.",
+    icon: ShieldCheck,
+  },
+  {
+    title: "Made for strength blocks",
+    text: "The name and visual structure suggest a product centered on rep-based lifting sessions where tracking progression matters as much as finishing the workout.",
+    icon: Target,
+  },
+  {
+    title: "Fast enough for the gym floor",
+    text: "The page positions the app as something users can operate mid-session without fighting clutter, hidden controls, or spreadsheet-style data entry.",
+    icon: Sparkles,
+  },
+  {
+    title: "Progress without noise",
+    text: "Instead of overloading the screen, the experience leans toward a guided flow: know the lift, log the set, recover, then move forward.",
+    icon: TrendingUp,
+  },
+];
+
+const repflowBuildPoints = [
+  "Workout session model built around exercises, sets, reps, and quick completion states",
+  "Active workout interface optimized for one-handed logging between sets",
+  "Progress layer for comparing training output across recent sessions",
+  "Rest and pacing cues that keep the user moving through the workout",
+  "A visual system tuned for gym use with stronger contrast and low-friction tap targets",
 ];
 
 const tapTempoFeatures = [
@@ -283,7 +362,7 @@ const faqEntries = [
   {
     question: "Which apps are part of PionX right now?",
     answer:
-      "Right now the site highlights HeartSync, Tap Tempo, and The Tip. HeartSync is focused on relationship milestones and memories, Tap Tempo is a BPM detector for music, and The Tip is a fast tip-and-bill-splitting calculator.",
+      "Right now the site highlights HeartSync, Repflow, Tap Tempo, and The Tip. HeartSync focuses on relationship milestones and memories, Repflow is positioned as a workout and rep-tracking product, Tap Tempo is a BPM detector for music, and The Tip is a fast tip-and-bill-splitting calculator.",
     icon: "📱",
   },
   {
@@ -367,13 +446,17 @@ const heartSyncBuildSteps = [
 ];
 
 type RevealDirection = "up" | "left" | "right";
-type PageKey = "home" | "heartsync" | "tap-tempo" | "the-tip" | "faq" | "privacy-policy";
+type PageKey = "home" | "heartsync" | "repflow" | "tap-tempo" | "the-tip" | "faq" | "privacy-policy";
 
 const brandfetchClientId = import.meta.env.VITE_BRANDFETCH_CLIENT_ID;
 
 function resolvePage(pathname: string): PageKey {
   if (pathname.startsWith("/heartsync")) {
     return "heartsync";
+  }
+
+  if (pathname.startsWith("/repflow")) {
+    return "repflow";
   }
 
   if (pathname.startsWith("/tap-tempo")) {
@@ -731,7 +814,7 @@ function HomePage({ pageLoaded, isDark }: { pageLoaded: boolean; isDark: boolean
           </p>
         </Reveal>
 
-        <div className="mt-14 grid gap-6 md:grid-cols-3">
+        <div className="mt-14 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
           {projects.map((project, index) => {
             const Icon = project.icon;
 
@@ -1007,7 +1090,7 @@ function ContactPanel({ isDark }: { isDark: boolean }) {
             </div>
           </div>
 
-          <div className="rounded-[1.35rem] border border-indigo-400/18 bg-[linear-gradient(160deg,rgba(76,29,149,0.42),rgba(49,46,129,0.74))] p-5">
+          <div className="quick-response-card rounded-[1.35rem] border border-indigo-400/18 bg-[linear-gradient(160deg,rgba(76,29,149,0.42),rgba(49,46,129,0.74))] p-5">
             <h3 className="text-2xl font-semibold tracking-[-0.03em]">Quick Response</h3>
             <p className="mt-4 text-sm leading-6 text-[var(--text-secondary)]">
               I typically respond within 24 hours. Looking forward to hearing about your project!
@@ -1021,14 +1104,14 @@ function ContactPanel({ isDark }: { isDark: boolean }) {
 
 function HeartSyncPage() {
   return (
-    <main className="relative z-10 overflow-hidden">
+    <main className="page-heartsync relative z-10 overflow-hidden">
       <section className="relative mx-auto max-w-6xl px-6 pb-24 pt-36">
         <div className="absolute left-1/2 top-28 h-96 w-96 -translate-x-1/2 rounded-full bg-pink-500/12 blur-3xl" />
         <div className="absolute right-12 top-40 h-72 w-72 rounded-full bg-violet-500/10 blur-3xl" />
 
         <div className="grid gap-14 lg:grid-cols-[0.92fr_1.08fr] lg:items-center">
           <Reveal direction="right">
-            <div className="inline-flex items-center gap-2 rounded-full border border-pink-300/16 bg-pink-300/8 px-4 py-2 text-sm text-pink-100/80">
+            <div className="page-hero-badge inline-flex items-center gap-2 rounded-full border border-pink-300/16 bg-pink-300/8 px-4 py-2 text-sm text-pink-100/80">
               <Heart className="h-4 w-4" />
               Premium relationship tracker / iOS product
             </div>
@@ -1090,7 +1173,7 @@ function HeartSyncPage() {
 
             return (
               <Reveal key={feature.title} className="card-panel heartsync-feature-card rounded-[1.45rem] border p-6" delay={index * 110}>
-                <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-pink-500/12 text-pink-200">
+                <div className="page-icon-accent mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-pink-500/12 text-pink-200">
                   <Icon className="h-5 w-5" />
                 </div>
                 <h3 className="text-2xl font-semibold tracking-[-0.03em]">{feature.title}</h3>
@@ -1105,7 +1188,7 @@ function HeartSyncPage() {
         <div className="grid gap-10 lg:grid-cols-[1.02fr_0.98fr] lg:items-center">
           <Reveal direction="right">
             <div className="card-panel heartsync-story-card rounded-[2rem] border p-8">
-              <p className="text-sm font-semibold uppercase tracking-[0.24em] text-pink-100/70">Product Positioning</p>
+              <p className="page-section-label text-sm font-semibold uppercase tracking-[0.24em] text-pink-100/70">Product Positioning</p>
               <h2 className="mt-4 text-4xl font-semibold leading-tight tracking-[-0.04em] md:text-5xl">
                 Better quality than the usual love counter.
               </h2>
@@ -1149,7 +1232,7 @@ function HeartSyncPage() {
           </ParallaxLayer>
 
           <Reveal direction="left">
-            <p className="text-sm font-semibold uppercase tracking-[0.24em] text-pink-100/70">Memories and Customization</p>
+            <p className="page-section-label text-sm font-semibold uppercase tracking-[0.24em] text-pink-100/70">Memories and Customization</p>
             <h2 className="mt-4 text-4xl font-semibold leading-tight tracking-[-0.04em] md:text-5xl">
               More than a counter. Closer to a shared relationship archive.
             </h2>
@@ -1160,7 +1243,7 @@ function HeartSyncPage() {
 
             <div className="mt-8 grid gap-4 sm:grid-cols-2">
               <Reveal className="card-panel heartsync-highlight-card rounded-[1.35rem] border p-5" delay={120}>
-                <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-2xl bg-pink-500/12 text-pink-200">
+                <div className="page-icon-accent mb-4 flex h-11 w-11 items-center justify-center rounded-2xl bg-pink-500/12 text-pink-200">
                   <Heart className="h-5 w-5" />
                 </div>
                 <h3 className="text-2xl font-semibold tracking-[-0.03em]">Love Story Dashboard</h3>
@@ -1170,7 +1253,7 @@ function HeartSyncPage() {
               </Reveal>
 
               <Reveal className="card-panel heartsync-highlight-card rounded-[1.35rem] border p-5" delay={220}>
-                <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-2xl bg-violet-500/12 text-violet-200">
+                <div className="page-icon-accent-alt mb-4 flex h-11 w-11 items-center justify-center rounded-2xl bg-violet-500/12 text-violet-200">
                   <CalendarHeart className="h-5 w-5" />
                 </div>
                 <h3 className="text-2xl font-semibold tracking-[-0.03em]">Memory Timeline</h3>
@@ -1180,7 +1263,7 @@ function HeartSyncPage() {
               </Reveal>
 
               <Reveal className="card-panel heartsync-highlight-card rounded-[1.35rem] border p-5" delay={320}>
-                <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-2xl bg-pink-500/12 text-pink-200">
+                <div className="page-icon-accent mb-4 flex h-11 w-11 items-center justify-center rounded-2xl bg-pink-500/12 text-pink-200">
                   <ImagePlus className="h-5 w-5" />
                 </div>
                 <h3 className="text-2xl font-semibold tracking-[-0.03em]">Add Memory Flow</h3>
@@ -1190,7 +1273,7 @@ function HeartSyncPage() {
               </Reveal>
 
               <Reveal className="card-panel heartsync-highlight-card rounded-[1.35rem] border p-5" delay={420}>
-                <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-2xl bg-violet-500/12 text-violet-200">
+                <div className="page-icon-accent-alt mb-4 flex h-11 w-11 items-center justify-center rounded-2xl bg-violet-500/12 text-violet-200">
                   <Palette className="h-5 w-5" />
                 </div>
                 <h3 className="text-2xl font-semibold tracking-[-0.03em]">Theme Library</h3>
@@ -1218,7 +1301,7 @@ function HeartSyncPage() {
             return (
               <Reveal key={item.title} className="card-panel heartsync-highlight-card rounded-[1.5rem] border p-6" delay={index * 110}>
                 <div className="flex items-start gap-4">
-                  <div className="mt-1 flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-2xl bg-violet-500/12 text-violet-200">
+                  <div className="page-icon-accent-alt mt-1 flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-2xl bg-violet-500/12 text-violet-200">
                     <Icon className="h-5 w-5" />
                   </div>
                   <div>
@@ -1244,7 +1327,7 @@ function HeartSyncPage() {
           </ParallaxLayer>
 
           <Reveal direction="left">
-            <p className="text-sm font-semibold uppercase tracking-[0.24em] text-pink-100/70">Development Blueprint</p>
+            <p className="page-section-label text-sm font-semibold uppercase tracking-[0.24em] text-pink-100/70">Development Blueprint</p>
             <h2 className="mt-4 text-4xl font-semibold leading-tight tracking-[-0.04em] md:text-5xl">
               Built around a clear product pipeline.
             </h2>
@@ -1258,7 +1341,7 @@ function HeartSyncPage() {
               {heartSyncBuildSteps.map((step, index) => (
                 <Reveal key={step} className="card-panel heartsync-step-card rounded-[1.3rem] border p-4" delay={160 + index * 90}>
                   <div className="flex items-start gap-4">
-                    <div className="flex h-9 w-9 items-center justify-center rounded-full bg-pink-500/14 text-sm font-semibold text-pink-100">
+                    <div className="page-step-index flex h-9 w-9 items-center justify-center rounded-full bg-pink-500/14 text-sm font-semibold text-pink-100">
                       {index + 1}
                     </div>
                     <p className="text-base leading-7 text-[var(--text-secondary)]">{step}</p>
@@ -1280,7 +1363,7 @@ function HeartSyncPage() {
 
         <div className="mt-14 grid gap-6 md:grid-cols-3">
           <Reveal className="card-panel heartsync-feature-card rounded-[1.45rem] border p-6">
-            <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-pink-500/12 text-pink-200">
+            <div className="page-icon-accent mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-pink-500/12 text-pink-200">
               <Users className="h-5 w-5" />
             </div>
             <h3 className="text-2xl font-semibold tracking-[-0.03em]">Shared Dashboards</h3>
@@ -1290,7 +1373,7 @@ function HeartSyncPage() {
           </Reveal>
 
           <Reveal className="card-panel heartsync-feature-card rounded-[1.45rem] border p-6" delay={110}>
-            <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-pink-500/12 text-pink-200">
+            <div className="page-icon-accent mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-pink-500/12 text-pink-200">
               <GiftIcon />
             </div>
             <h3 className="text-2xl font-semibold tracking-[-0.03em]">Gift Suggestions</h3>
@@ -1300,7 +1383,7 @@ function HeartSyncPage() {
           </Reveal>
 
           <Reveal className="card-panel heartsync-feature-card rounded-[1.45rem] border p-6" delay={220}>
-            <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-pink-500/12 text-pink-200">
+            <div className="page-icon-accent mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-pink-500/12 text-pink-200">
               <CalendarHeart className="h-5 w-5" />
             </div>
             <h3 className="text-2xl font-semibold tracking-[-0.03em]">Memories Timeline</h3>
@@ -1314,21 +1397,213 @@ function HeartSyncPage() {
   );
 }
 
+function RepflowPage() {
+  return (
+    <main className="page-repflow relative z-10 overflow-hidden">
+      <section className="relative mx-auto max-w-6xl px-6 pb-24 pt-36">
+        <div className="absolute left-10 top-24 h-80 w-80 rounded-full bg-orange-400/10 blur-3xl" />
+        <div className="absolute right-12 top-20 h-96 w-96 rounded-full bg-rose-500/8 blur-3xl" />
+
+        <div className="grid gap-14 lg:grid-cols-[0.94fr_1.06fr] lg:items-center">
+          <Reveal direction="right">
+            <div className="page-hero-badge inline-flex items-center gap-3 rounded-full border border-orange-300/16 bg-orange-300/8 px-3 py-2 text-sm text-orange-100/85 shadow-[0_16px_40px_rgba(249,115,22,0.12)]">
+              <span className="flex h-10 w-10 items-center justify-center overflow-hidden rounded-full border border-orange-300/20 bg-black/45 p-1">
+                <img src={repflowIcon} alt="Repflow app icon" className="h-full w-full rounded-full object-cover" />
+              </span>
+              <span className="flex flex-col text-left leading-tight">
+                <span className="page-badge-meta text-[0.65rem] font-semibold uppercase tracking-[0.22em] text-orange-200/70">Repflow</span>
+                <span>Strength tracker / iOS fitness product</span>
+              </span>
+            </div>
+            <h1 className="mt-8 max-w-3xl text-5xl font-semibold leading-[0.98] tracking-[-0.05em] md:text-7xl">
+              Repflow keeps strength workouts moving without losing the data.
+            </h1>
+            <p className="mt-8 max-w-2xl text-lg leading-8 text-[var(--text-secondary)]">
+              A focused training app built around logging sets, reps, and session progress in a cleaner flow, so users can stay in
+              the workout instead of managing a messy notes app or spreadsheet.
+            </p>
+
+            <div className="mt-10 flex flex-col gap-4 sm:flex-row">
+              <a href="#repflow-features" className="btn-primary inline-flex items-center justify-center gap-2 rounded-xl px-7 py-3.5 text-sm font-medium">
+                Explore Features
+                <ArrowRight className="h-4 w-4" />
+              </a>
+              <a
+                href="#repflow-system"
+                className="inline-flex items-center justify-center rounded-xl border border-[var(--line-soft)] bg-[var(--surface-soft)] px-7 py-3.5 text-sm font-medium text-[var(--text-primary)] transition hover:bg-[var(--surface-hover)]"
+              >
+                See the Flow
+              </a>
+            </div>
+          </Reveal>
+
+          <div className="relative min-h-[48rem]">
+            <ParallaxLayer className="absolute left-0 top-16 z-10 w-[42%]" speed={0.11}>
+              <Reveal className="phone-shot repflow-shot repflow-shot-primary rounded-[2.2rem] border p-3 shadow-[0_30px_90px_rgba(0,0,0,0.35)]">
+                <img src={repflowShot1} alt="Repflow workout overview screen" className="w-full rounded-[1.65rem] object-cover" />
+              </Reveal>
+            </ParallaxLayer>
+
+            <ParallaxLayer className="absolute right-0 top-0 w-[48%]" speed={-0.08}>
+              <Reveal delay={120} className="phone-shot repflow-shot repflow-shot-secondary rounded-[2.2rem] border p-3 shadow-[0_30px_90px_rgba(0,0,0,0.32)]">
+                <img src={repflowShot2} alt="Repflow active workout screen" className="w-full rounded-[1.65rem] object-cover" />
+              </Reveal>
+            </ParallaxLayer>
+
+            <ParallaxLayer className="absolute right-[10%] top-[52%] z-20 w-[38%]" speed={0.07}>
+              <Reveal delay={220} className="phone-shot repflow-shot repflow-shot-tertiary rounded-[2rem] border p-3 shadow-[0_24px_70px_rgba(0,0,0,0.28)]">
+                <img src={repflowShot3} alt="Repflow workout detail screen" className="w-full rounded-[1.5rem] object-cover" />
+              </Reveal>
+            </ParallaxLayer>
+          </div>
+        </div>
+      </section>
+
+      <section id="repflow-features" className="mx-auto max-w-6xl px-6 py-24">
+        <Reveal className="mx-auto max-w-2xl text-center">
+          <h2 className="text-4xl font-semibold tracking-[-0.04em] md:text-5xl">Key Features</h2>
+          <p className="mt-4 text-lg text-[var(--text-secondary)]">
+            Repflow is positioned around faster workout execution, clearer rep tracking, and a stronger sense of progression from session to session.
+          </p>
+        </Reveal>
+
+        <div className="mt-14 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+          {repflowFeatures.map((feature, index) => {
+            const Icon = feature.icon;
+
+            return (
+              <Reveal key={feature.title} className="card-panel repflow-feature-card rounded-[1.45rem] border p-6" delay={index * 110}>
+                <div className="page-icon-accent mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-orange-400/12 text-orange-100">
+                  <Icon className="h-5 w-5" />
+                </div>
+                <h3 className="text-2xl font-semibold tracking-[-0.03em]">{feature.title}</h3>
+                <p className="mt-4 text-base leading-7 text-[var(--text-secondary)]">{feature.description}</p>
+              </Reveal>
+            );
+          })}
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-6xl px-6 py-24">
+        <div className="grid gap-10 lg:grid-cols-[1.02fr_0.98fr] lg:items-center">
+          <Reveal direction="right">
+            <div className="card-panel repflow-story-card rounded-[2rem] border p-8">
+              <p className="page-section-label text-sm font-semibold uppercase tracking-[0.24em] text-orange-100/70">Product Use Case</p>
+              <h2 className="mt-4 text-4xl font-semibold leading-tight tracking-[-0.04em] md:text-5xl">
+                A gym log that respects the pace of a real session.
+              </h2>
+              <p className="mt-6 text-lg leading-8 text-[var(--text-secondary)]">
+                Repflow is aimed at users who want the accountability of a training log without slowing down every set. The product
+                story centers on keeping workouts structured while removing the friction that usually comes with manual tracking.
+              </p>
+              <p className="mt-6 text-lg leading-8 text-[var(--text-secondary)]">
+                That makes the app useful for lifters following repeat programs, chasing better volume, or simply wanting a cleaner
+                record of what happened in the gym this week.
+              </p>
+            </div>
+          </Reveal>
+
+          <ParallaxLayer speed={0.08}>
+            <Reveal direction="left" delay={120}>
+              <div className="relative rounded-[2rem] border border-orange-300/12 bg-[linear-gradient(160deg,rgba(251,146,60,0.12),rgba(17,24,39,0.52))] p-5 shadow-[0_24px_80px_rgba(0,0,0,0.28)]">
+                <div className="absolute inset-0 rounded-[2rem] bg-[radial-gradient(circle_at_top,rgba(251,146,60,0.16),transparent_42%)]" />
+                <img src={repflowShot4} alt="Repflow workout progress screen" className="relative w-full rounded-[1.55rem] object-cover" />
+              </div>
+            </Reveal>
+          </ParallaxLayer>
+        </div>
+      </section>
+
+      <section id="repflow-system" className="mx-auto max-w-6xl px-6 py-24">
+        <Reveal className="mx-auto max-w-2xl text-center">
+          <h2 className="text-4xl font-semibold tracking-[-0.04em] md:text-5xl">What the Product Direction Signals</h2>
+          <p className="mt-4 text-lg text-[var(--text-secondary)]">
+            The interface reads like a tool for repeat training blocks, where execution speed and usable history matter more than novelty.
+          </p>
+        </Reveal>
+
+        <div className="mt-14 grid gap-6 md:grid-cols-2">
+          {repflowHighlights.map((item, index) => {
+            const Icon = item.icon;
+
+            return (
+              <Reveal key={item.title} className="card-panel repflow-highlight-card rounded-[1.5rem] border p-6" delay={index * 110}>
+                <div className="flex items-start gap-4">
+                  <div className="page-icon-accent mt-1 flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-2xl bg-orange-400/12 text-orange-100">
+                    <Icon className="h-5 w-5" />
+                  </div>
+                  <div>
+                    <h3 className="text-2xl font-semibold tracking-[-0.03em]">{item.title}</h3>
+                    <p className="mt-3 text-base leading-7 text-[var(--text-secondary)]">{item.text}</p>
+                  </div>
+                </div>
+              </Reveal>
+            );
+          })}
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-6xl px-6 py-24">
+        <div className="grid gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
+          <ParallaxLayer speed={-0.08}>
+            <Reveal direction="right">
+              <div className="grid gap-6 md:grid-cols-2">
+                <div className="relative rounded-[2rem] border border-orange-300/12 bg-[linear-gradient(180deg,rgba(249,115,22,0.1),rgba(17,24,39,0.38))] p-4 shadow-[0_24px_80px_rgba(0,0,0,0.24)]">
+                  <div className="absolute inset-0 rounded-[2rem] bg-[radial-gradient(circle_at_top,rgba(251,146,60,0.12),transparent_46%)]" />
+                  <img src={repflowShot5} alt="Repflow exercise list screen" className="relative w-full rounded-[1.45rem] object-cover" />
+                </div>
+                <div className="relative rounded-[2rem] border border-rose-300/10 bg-[linear-gradient(180deg,rgba(244,63,94,0.1),rgba(17,24,39,0.38))] p-4 shadow-[0_24px_80px_rgba(0,0,0,0.24)]">
+                  <div className="absolute inset-0 rounded-[2rem] bg-[radial-gradient(circle_at_bottom,rgba(251,113,133,0.12),transparent_46%)]" />
+                  <img src={repflowShot2} alt="Repflow set logging flow" className="relative w-full rounded-[1.45rem] object-cover" />
+                </div>
+              </div>
+            </Reveal>
+          </ParallaxLayer>
+
+          <Reveal direction="left">
+            <p className="page-section-label text-sm font-semibold uppercase tracking-[0.24em] text-orange-100/70">Implementation Notes</p>
+            <h2 className="mt-4 text-4xl font-semibold leading-tight tracking-[-0.04em] md:text-5xl">
+              The value is in the training loop, not just the tracking.
+            </h2>
+            <p className="mt-6 text-lg leading-8 text-[var(--text-secondary)]">
+              Good fitness products do more than store numbers. They help the user stay locked into the workout, understand what is
+              next, and leave with a record that makes the next session smarter. Repflow’s structure points directly at that loop.
+            </p>
+
+            <div className="mt-8 space-y-4">
+              {repflowBuildPoints.map((point, index) => (
+                <Reveal key={point} className="card-panel repflow-step-card rounded-[1.3rem] border p-4" delay={160 + index * 90}>
+                  <div className="flex items-start gap-4">
+                    <div className="page-step-index flex h-9 w-9 items-center justify-center rounded-full bg-orange-400/14 text-sm font-semibold text-orange-100">
+                      {index + 1}
+                    </div>
+                    <p className="text-base leading-7 text-[var(--text-secondary)]">{point}</p>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
+          </Reveal>
+        </div>
+      </section>
+    </main>
+  );
+}
+
 function TapTempoPage() {
   return (
-    <main className="relative z-10 overflow-hidden">
+    <main className="page-tap-tempo relative z-10 overflow-hidden">
       <section className="relative mx-auto max-w-6xl px-6 pb-24 pt-36">
         <div className="absolute left-16 top-28 h-80 w-80 rounded-full bg-lime-300/10 blur-3xl" />
         <div className="absolute right-12 top-20 h-96 w-96 rounded-full bg-lime-400/8 blur-3xl" />
 
         <div className="grid gap-14 lg:grid-cols-[0.94fr_1.06fr] lg:items-center">
           <Reveal direction="right">
-            <div className="inline-flex items-center gap-3 rounded-full border border-lime-300/16 bg-lime-300/8 px-3 py-2 text-sm text-lime-100/85 shadow-[0_16px_40px_rgba(132,204,22,0.12)]">
+            <div className="page-hero-badge inline-flex items-center gap-3 rounded-full border border-lime-300/16 bg-lime-300/8 px-3 py-2 text-sm text-lime-100/85 shadow-[0_16px_40px_rgba(132,204,22,0.12)]">
               <span className="flex h-10 w-10 items-center justify-center overflow-hidden rounded-full border border-lime-300/20 bg-black/50 p-1">
                 <img src={tapTempoIcon} alt="Tap Tempo app icon" className="h-full w-full rounded-full object-cover" />
               </span>
               <span className="flex flex-col text-left leading-tight">
-                <span className="text-[0.65rem] font-semibold uppercase tracking-[0.22em] text-lime-200/70">Tap Tempo</span>
+                <span className="page-badge-meta text-[0.65rem] font-semibold uppercase tracking-[0.22em] text-lime-200/70">Tap Tempo</span>
                 <span>BPM detector / iOS utility</span>
               </span>
             </div>
@@ -1390,7 +1665,7 @@ function TapTempoPage() {
 
             return (
               <Reveal key={feature.title} className="card-panel taptempo-feature-card rounded-[1.45rem] border p-6" delay={index * 110}>
-                <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-lime-300/12 text-lime-100">
+                <div className="page-icon-accent mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-lime-300/12 text-lime-100">
                   <Icon className="h-5 w-5" />
                 </div>
                 <h3 className="text-2xl font-semibold tracking-[-0.03em]">{feature.title}</h3>
@@ -1405,7 +1680,7 @@ function TapTempoPage() {
         <div className="grid gap-10 lg:grid-cols-[1.02fr_0.98fr] lg:items-center">
           <Reveal direction="right">
             <div className="card-panel taptempo-story-card rounded-[2rem] border p-8">
-              <p className="text-sm font-semibold uppercase tracking-[0.24em] text-lime-100/70">Product Use Case</p>
+              <p className="page-section-label text-sm font-semibold uppercase tracking-[0.24em] text-lime-100/70">Product Use Case</p>
               <h2 className="mt-4 text-4xl font-semibold leading-tight tracking-[-0.04em] md:text-5xl">
                 Built for musicians, producers, and anyone trying to catch a groove.
               </h2>
@@ -1446,7 +1721,7 @@ function TapTempoPage() {
             return (
               <Reveal key={item.title} className="card-panel taptempo-highlight-card rounded-[1.5rem] border p-6" delay={index * 110}>
                 <div className="flex items-start gap-4">
-                  <div className="mt-1 flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-2xl bg-lime-300/12 text-lime-100">
+                  <div className="page-icon-accent mt-1 flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-2xl bg-lime-300/12 text-lime-100">
                     <Icon className="h-5 w-5" />
                   </div>
                   <div>
@@ -1472,7 +1747,7 @@ function TapTempoPage() {
           </ParallaxLayer>
 
           <Reveal direction="left">
-            <p className="text-sm font-semibold uppercase tracking-[0.24em] text-lime-100/70">Experience Notes</p>
+            <p className="page-section-label text-sm font-semibold uppercase tracking-[0.24em] text-lime-100/70">Experience Notes</p>
             <h2 className="mt-4 text-4xl font-semibold leading-tight tracking-[-0.04em] md:text-5xl">
               A utility app that still feels composed.
             </h2>
@@ -1485,7 +1760,7 @@ function TapTempoPage() {
               {tapTempoBuildPoints.map((point, index) => (
                 <Reveal key={point} className="card-panel taptempo-step-card rounded-[1.3rem] border p-4" delay={160 + index * 90}>
                   <div className="flex items-start gap-4">
-                    <div className="flex h-9 w-9 items-center justify-center rounded-full bg-lime-300/14 text-sm font-semibold text-lime-100">
+                    <div className="page-step-index flex h-9 w-9 items-center justify-center rounded-full bg-lime-300/14 text-sm font-semibold text-lime-100">
                       {index + 1}
                     </div>
                     <p className="text-base leading-7 text-[var(--text-secondary)]">{point}</p>
@@ -1507,7 +1782,7 @@ function TapTempoPage() {
 
         <div className="mt-14 grid gap-6 md:grid-cols-3">
           <Reveal className="card-panel taptempo-feature-card rounded-[1.45rem] border p-6">
-            <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-lime-300/12 text-lime-100">
+            <div className="page-icon-accent mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-lime-300/12 text-lime-100">
               <span className="text-lg">🎧</span>
             </div>
             <h3 className="text-2xl font-semibold tracking-[-0.03em]">Hands-Free Mode</h3>
@@ -1517,7 +1792,7 @@ function TapTempoPage() {
           </Reveal>
 
           <Reveal className="card-panel taptempo-feature-card rounded-[1.45rem] border p-6" delay={110}>
-            <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-lime-300/12 text-lime-100">
+            <div className="page-icon-accent mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-lime-300/12 text-lime-100">
               <span className="text-lg">🎼</span>
             </div>
             <h3 className="text-2xl font-semibold tracking-[-0.03em]">Readable Tempo Ranges</h3>
@@ -1527,7 +1802,7 @@ function TapTempoPage() {
           </Reveal>
 
           <Reveal className="card-panel taptempo-feature-card rounded-[1.45rem] border p-6" delay={220}>
-            <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-lime-300/12 text-lime-100">
+            <div className="page-icon-accent mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-lime-300/12 text-lime-100">
               <span className="text-lg">🧠</span>
             </div>
             <h3 className="text-2xl font-semibold tracking-[-0.03em]">Smarter Session Recall</h3>
@@ -1543,14 +1818,14 @@ function TapTempoPage() {
 
 function TheTipPage() {
   return (
-    <main className="relative z-10 overflow-hidden">
+    <main className="page-the-tip relative z-10 overflow-hidden">
       <section className="relative mx-auto max-w-6xl px-6 pb-24 pt-36">
         <div className="absolute left-10 top-32 h-72 w-72 rounded-full bg-sky-400/10 blur-3xl" />
         <div className="absolute right-16 top-24 h-96 w-96 rounded-full bg-cyan-400/8 blur-3xl" />
 
         <div className="grid gap-14 lg:grid-cols-[0.94fr_1.06fr] lg:items-center">
           <Reveal direction="right">
-            <div className="inline-flex items-center gap-2 rounded-full border border-sky-300/16 bg-sky-300/8 px-4 py-2 text-sm text-sky-100/80">
+            <div className="page-hero-badge inline-flex items-center gap-2 rounded-full border border-sky-300/16 bg-sky-300/8 px-4 py-2 text-sm text-sky-100/80">
               <span className="text-base">💸</span>
               Tip calculator / iOS utility
             </div>
@@ -1588,7 +1863,7 @@ function TheTipPage() {
                 <div className="flex items-center gap-4">
                   <img src={theTipIcon} alt="The Tip app icon" className="h-16 w-16 rounded-[1.15rem] object-cover" />
                   <div>
-                    <p className="text-sm font-semibold uppercase tracking-[0.24em] text-sky-100/70">Quick Utility</p>
+                    <p className="page-section-label text-sm font-semibold uppercase tracking-[0.24em] text-sky-100/70">Quick Utility</p>
                     <h2 className="mt-2 text-3xl font-semibold tracking-[-0.03em]">One-screen split math</h2>
                   </div>
                 </div>
@@ -1624,7 +1899,7 @@ function TheTipPage() {
 
             return (
               <Reveal key={feature.title} className="card-panel thetip-feature-card rounded-[1.45rem] border p-6" delay={index * 110}>
-                <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-sky-400/12 text-sky-200">
+                <div className="page-icon-accent mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-sky-400/12 text-sky-200">
                   <Icon className="h-5 w-5" />
                 </div>
                 <h3 className="text-2xl font-semibold tracking-[-0.03em]">{feature.title}</h3>
@@ -1639,7 +1914,7 @@ function TheTipPage() {
         <div className="grid gap-10 lg:grid-cols-[1.02fr_0.98fr] lg:items-center">
           <Reveal direction="right">
             <div className="card-panel thetip-story-card rounded-[2rem] border p-8">
-              <p className="text-sm font-semibold uppercase tracking-[0.24em] text-sky-100/70">Product Use Case</p>
+              <p className="page-section-label text-sm font-semibold uppercase tracking-[0.24em] text-sky-100/70">Product Use Case</p>
               <h2 className="mt-4 text-4xl font-semibold leading-tight tracking-[-0.04em] md:text-5xl">
                 A practical bill-splitting tool with just enough polish.
               </h2>
@@ -1680,7 +1955,7 @@ function TheTipPage() {
             return (
               <Reveal key={item.title} className="card-panel thetip-highlight-card rounded-[1.5rem] border p-6" delay={index * 110}>
                 <div className="flex items-start gap-4">
-                  <div className="mt-1 flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-2xl bg-cyan-400/10 text-cyan-200">
+                  <div className="page-icon-accent mt-1 flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-2xl bg-cyan-400/10 text-cyan-200">
                     <Icon className="h-5 w-5" />
                   </div>
                   <div>
@@ -1699,7 +1974,7 @@ function TheTipPage() {
           <ParallaxLayer speed={-0.08}>
             <Reveal direction="right">
               <div className="card-panel thetip-step-card rounded-[2rem] border p-8">
-                <p className="text-sm font-semibold uppercase tracking-[0.24em] text-sky-100/70">Calculator Logic</p>
+                <p className="page-section-label text-sm font-semibold uppercase tracking-[0.24em] text-sky-100/70">Calculator Logic</p>
                 <div className="mt-6 space-y-4">
                   <div className="rounded-[1.25rem] border border-white/6 bg-white/4 px-4 py-3 text-sm text-[var(--text-secondary)]">
                     1. Enter bill amount
@@ -1722,7 +1997,7 @@ function TheTipPage() {
           </ParallaxLayer>
 
           <Reveal direction="left">
-            <p className="text-sm font-semibold uppercase tracking-[0.24em] text-sky-100/70">Implementation Notes</p>
+            <p className="page-section-label text-sm font-semibold uppercase tracking-[0.24em] text-sky-100/70">Implementation Notes</p>
             <h2 className="mt-4 text-4xl font-semibold leading-tight tracking-[-0.04em] md:text-5xl">
               Designed to remove friction from a tiny, everyday task.
             </h2>
@@ -1735,7 +2010,7 @@ function TheTipPage() {
               {theTipBuildPoints.map((point, index) => (
                 <Reveal key={point} className="card-panel thetip-step-card rounded-[1.3rem] border p-4" delay={160 + index * 90}>
                   <div className="flex items-start gap-4">
-                    <div className="flex h-9 w-9 items-center justify-center rounded-full bg-sky-400/14 text-sm font-semibold text-sky-100">
+                    <div className="page-step-index flex h-9 w-9 items-center justify-center rounded-full bg-sky-400/14 text-sm font-semibold text-sky-100">
                       {index + 1}
                     </div>
                     <p className="text-base leading-7 text-[var(--text-secondary)]">{point}</p>
@@ -1979,7 +2254,7 @@ function App() {
   };
 
   const shellClassName = `site-shell min-h-screen bg-[var(--page-bg)] text-[var(--text-primary)]${
-    currentPage === "tap-tempo" ? " page-tap-tempo" : ""
+    currentPage === "tap-tempo" ? " page-tap-tempo" : currentPage === "repflow" ? " page-repflow" : ""
   }`;
 
   return (
@@ -2000,6 +2275,8 @@ function App() {
 
         {currentPage === "heartsync" ? (
           <HeartSyncPage />
+        ) : currentPage === "repflow" ? (
+          <RepflowPage />
         ) : currentPage === "tap-tempo" ? (
           <TapTempoPage />
         ) : currentPage === "the-tip" ? (

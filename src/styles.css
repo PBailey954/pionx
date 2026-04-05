@@ -1,5 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@400;500;600;700;800&display=swap");
-@import "tailwindcss";
+@import "tailwindcss" source(".");
 
 @layer base {
   :root {
@@ -17,7 +16,13 @@
   body {
     margin: 0;
     min-width: 320px;
-    font-family: "Inter", sans-serif;
+    font-family:
+      "Avenir Next",
+      "Segoe UI",
+      "Helvetica Neue",
+      Helvetica,
+      Arial,
+      sans-serif;
     background: #0a0a0a;
     color: #f5f5f5;
   }
@@ -59,7 +64,7 @@
   .theme-light {
     --page-bg: #f7f7fa;
     --text-primary: #101114;
-    --text-secondary: #585c66;
+    --text-secondary: #4b5565;
     --surface-soft: rgba(16, 17, 20, 0.05);
     --surface-card: rgba(255, 255, 255, 0.8);
     --surface-hover: rgba(16, 17, 20, 0.08);
@@ -93,6 +98,57 @@
       #040507;
   }
 
+  .theme-light .page-tap-tempo {
+    --text-primary: #19250e;
+    --text-secondary: #526245;
+    --surface-soft: rgba(132, 204, 22, 0.1);
+    --surface-card: rgba(255, 255, 255, 0.92);
+    --surface-hover: rgba(132, 204, 22, 0.14);
+    --line-soft: rgba(101, 163, 13, 0.14);
+    --line-strong: rgba(101, 163, 13, 0.22);
+    --shadow-accent: 0 18px 48px rgba(132, 204, 22, 0.18);
+    background:
+      radial-gradient(circle at 18% 16%, rgba(163, 230, 53, 0.12), transparent 24%),
+      radial-gradient(circle at 84% 14%, rgba(190, 242, 100, 0.1), transparent 20%),
+      radial-gradient(circle at 50% 100%, rgba(132, 204, 22, 0.08), transparent 26%),
+      linear-gradient(180deg, rgba(163, 230, 53, 0.035) 0%, transparent 28%),
+      #ffffff;
+  }
+
+  .page-repflow {
+    --text-primary: #fff3ea;
+    --text-secondary: #c7a795;
+    --surface-soft: rgba(251, 146, 60, 0.08);
+    --surface-card: rgba(14, 10, 9, 0.84);
+    --surface-hover: rgba(251, 146, 60, 0.12);
+    --line-soft: rgba(251, 146, 60, 0.1);
+    --line-strong: rgba(251, 146, 60, 0.18);
+    --shadow-accent: 0 18px 48px rgba(249, 115, 22, 0.28);
+    background:
+      radial-gradient(circle at 14% 16%, rgba(251, 146, 60, 0.12), transparent 24%),
+      radial-gradient(circle at 84% 14%, rgba(244, 63, 94, 0.08), transparent 22%),
+      radial-gradient(circle at 50% 100%, rgba(249, 115, 22, 0.08), transparent 28%),
+      linear-gradient(180deg, rgba(251, 146, 60, 0.02) 0%, transparent 28%),
+      #080607;
+  }
+
+  .theme-light .page-repflow {
+    --text-primary: #32180d;
+    --text-secondary: #7a5947;
+    --surface-soft: rgba(249, 115, 22, 0.1);
+    --surface-card: rgba(255, 251, 247, 0.92);
+    --surface-hover: rgba(249, 115, 22, 0.14);
+    --line-soft: rgba(234, 88, 12, 0.14);
+    --line-strong: rgba(234, 88, 12, 0.22);
+    --shadow-accent: 0 18px 48px rgba(249, 115, 22, 0.18);
+    background:
+      radial-gradient(circle at 14% 16%, rgba(251, 146, 60, 0.13), transparent 24%),
+      radial-gradient(circle at 84% 14%, rgba(251, 113, 133, 0.1), transparent 20%),
+      radial-gradient(circle at 50% 100%, rgba(249, 115, 22, 0.08), transparent 26%),
+      linear-gradient(180deg, rgba(251, 146, 60, 0.035) 0%, transparent 28%),
+      #fffaf7;
+  }
+
   .page-tap-tempo .hero-grid {
     background-image:
       linear-gradient(to right, rgba(190, 242, 100, 0.07) 1px, transparent 1px),
@@ -105,6 +161,48 @@
       radial-gradient(circle at 50% 26%, rgba(163, 230, 53, 0.16), transparent 20%),
       radial-gradient(circle at 12% 16%, rgba(132, 204, 22, 0.12), transparent 28%),
       radial-gradient(circle at 86% 10%, rgba(190, 242, 100, 0.08), transparent 24%);
+  }
+
+  .theme-light .page-tap-tempo .hero-grid {
+    background-image:
+      linear-gradient(to right, rgba(101, 163, 13, 0.08) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(101, 163, 13, 0.08) 1px, transparent 1px);
+    opacity: 0.55;
+  }
+
+  .theme-light .page-tap-tempo .hero-glow {
+    background:
+      radial-gradient(circle at 50% 26%, rgba(163, 230, 53, 0.14), transparent 20%),
+      radial-gradient(circle at 12% 16%, rgba(132, 204, 22, 0.1), transparent 28%),
+      radial-gradient(circle at 86% 10%, rgba(190, 242, 100, 0.1), transparent 24%);
+  }
+
+  .page-repflow .hero-grid {
+    background-image:
+      linear-gradient(to right, rgba(251, 146, 60, 0.07) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(251, 146, 60, 0.07) 1px, transparent 1px);
+    opacity: 0.7;
+  }
+
+  .page-repflow .hero-glow {
+    background:
+      radial-gradient(circle at 50% 28%, rgba(251, 146, 60, 0.14), transparent 20%),
+      radial-gradient(circle at 12% 16%, rgba(249, 115, 22, 0.12), transparent 28%),
+      radial-gradient(circle at 88% 10%, rgba(244, 63, 94, 0.08), transparent 24%);
+  }
+
+  .theme-light .page-repflow .hero-grid {
+    background-image:
+      linear-gradient(to right, rgba(234, 88, 12, 0.08) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(234, 88, 12, 0.08) 1px, transparent 1px);
+    opacity: 0.55;
+  }
+
+  .theme-light .page-repflow .hero-glow {
+    background:
+      radial-gradient(circle at 50% 28%, rgba(251, 146, 60, 0.14), transparent 20%),
+      radial-gradient(circle at 12% 16%, rgba(249, 115, 22, 0.1), transparent 28%),
+      radial-gradient(circle at 88% 10%, rgba(251, 113, 133, 0.1), transparent 24%);
   }
 
   .hero-grid {
@@ -136,6 +234,13 @@
       0 0 0 1px rgba(190, 242, 100, 0.04) inset;
   }
 
+  .page-repflow .nav-wrap {
+    border-color: rgba(251, 146, 60, 0.12);
+    box-shadow:
+      0 10px 30px rgba(0, 0, 0, 0.26),
+      0 0 0 1px rgba(251, 146, 60, 0.04) inset;
+  }
+
   .announcement-banner {
     background: color-mix(in srgb, var(--surface-card) 92%, transparent);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.14);
@@ -143,7 +248,7 @@
   }
 
   .announcement-banner-text {
-    font-family: "Fira Code", monospace;
+    font-family: "SFMono-Regular", "Fira Code", "Menlo", "Consolas", monospace;
     font-size: 14px;
   }
 
@@ -160,6 +265,10 @@
 
   .page-tap-tempo .announcement-banner-line {
     background: linear-gradient(90deg, rgba(217, 249, 157, 0.95) 0%, rgba(163, 230, 53, 0.95) 48%, rgba(101, 163, 13, 0.95) 100%);
+  }
+
+  .page-repflow .announcement-banner-line {
+    background: linear-gradient(90deg, rgba(254, 215, 170, 0.95) 0%, rgba(251, 146, 60, 0.95) 48%, rgba(244, 63, 94, 0.95) 100%);
   }
 
   .theme-toggle {
@@ -212,6 +321,10 @@
     background: rgba(163, 230, 53, 0.12);
   }
 
+  .page-repflow .menu-dropdown-item:hover {
+    background: rgba(251, 146, 60, 0.12);
+  }
+
   .project-menu-icon,
   .project-card-icon {
     display: block;
@@ -226,6 +339,122 @@
     border: 1px solid rgba(99, 102, 241, 0.24);
     background: linear-gradient(90deg, rgba(59, 130, 246, 0.18), rgba(139, 92, 246, 0.2));
     color: #e8edff;
+  }
+
+  .theme-light .project-badge-ios {
+    border-color: rgba(79, 70, 229, 0.18);
+    background: linear-gradient(90deg, rgba(191, 219, 254, 0.88), rgba(221, 214, 254, 0.92));
+    color: #2f356b;
+  }
+
+  .theme-light .quick-response-card {
+    border-color: rgba(129, 140, 248, 0.24);
+    background: linear-gradient(160deg, rgba(238, 242, 255, 0.98), rgba(224, 231, 255, 0.92));
+    box-shadow: 0 18px 40px rgba(99, 102, 241, 0.12);
+  }
+
+  .theme-light .quick-response-card h3 {
+    color: #1f2a44;
+  }
+
+  .theme-light .quick-response-card p {
+    color: #475569;
+  }
+
+  .theme-light .page-heartsync,
+  .theme-light .page-tap-tempo,
+  .theme-light .page-repflow,
+  .theme-light .page-the-tip {
+    --text-secondary: #465466;
+  }
+
+  .theme-light .page-heartsync .page-hero-badge,
+  .theme-light .page-heartsync .page-hero-badge *,
+  .theme-light .page-heartsync .page-section-label,
+  .theme-light .page-heartsync .page-step-index {
+    color: #8a315c;
+  }
+
+  .theme-light .page-heartsync .page-hero-badge {
+    border-color: rgba(236, 72, 153, 0.18);
+    background: rgba(251, 207, 232, 0.56);
+  }
+
+  .theme-light .page-heartsync .page-icon-accent {
+    color: #a13d6d;
+    background: rgba(244, 114, 182, 0.16);
+  }
+
+  .theme-light .page-heartsync .page-icon-accent-alt {
+    color: #6450b5;
+    background: rgba(139, 92, 246, 0.14);
+  }
+
+  .theme-light .page-tap-tempo .page-hero-badge,
+  .theme-light .page-tap-tempo .page-hero-badge *,
+  .theme-light .page-tap-tempo .page-section-label,
+  .theme-light .page-tap-tempo .page-badge-meta,
+  .theme-light .page-tap-tempo .page-step-index {
+    color: #446311;
+  }
+
+  .theme-light .page-tap-tempo .page-hero-badge {
+    border-color: rgba(132, 204, 22, 0.22);
+    background: rgba(217, 249, 157, 0.62);
+    box-shadow: 0 16px 40px rgba(132, 204, 22, 0.14);
+  }
+
+  .theme-light .page-tap-tempo .page-icon-accent {
+    color: #35510a;
+    background: rgba(163, 230, 53, 0.24);
+    border: 1px solid rgba(101, 163, 13, 0.2);
+    box-shadow: 0 10px 24px rgba(132, 204, 22, 0.12);
+  }
+
+  .theme-light .page-tap-tempo .page-icon-accent * {
+    color: inherit;
+  }
+
+  .theme-light .page-repflow .page-hero-badge,
+  .theme-light .page-repflow .page-hero-badge *,
+  .theme-light .page-repflow .page-section-label,
+  .theme-light .page-repflow .page-badge-meta,
+  .theme-light .page-repflow .page-step-index {
+    color: #9a4315;
+  }
+
+  .theme-light .page-repflow .page-hero-badge {
+    border-color: rgba(249, 115, 22, 0.22);
+    background: rgba(254, 215, 170, 0.62);
+    box-shadow: 0 16px 40px rgba(249, 115, 22, 0.14);
+  }
+
+  .theme-light .page-repflow .page-icon-accent {
+    color: #8f3514;
+    background: rgba(251, 146, 60, 0.2);
+    border: 1px solid rgba(234, 88, 12, 0.16);
+    box-shadow: 0 10px 24px rgba(249, 115, 22, 0.12);
+  }
+
+  .theme-light .page-repflow .page-icon-accent * {
+    color: inherit;
+  }
+
+  .theme-light .page-the-tip .page-hero-badge,
+  .theme-light .page-the-tip .page-hero-badge *,
+  .theme-light .page-the-tip .page-section-label,
+  .theme-light .page-the-tip .page-step-index {
+    color: #0f6178;
+  }
+
+  .theme-light .page-the-tip .page-hero-badge {
+    border-color: rgba(14, 165, 233, 0.2);
+    background: rgba(186, 230, 253, 0.56);
+  }
+
+  .theme-light .page-the-tip .page-icon-accent {
+    color: #0f6178;
+    background: rgba(56, 189, 248, 0.16);
   }
 
   .theme-toggle-animate {
@@ -243,6 +472,14 @@
     border-color: rgba(190, 242, 100, 0.08);
     box-shadow:
       0 0 0 1px rgba(190, 242, 100, 0.04) inset,
+      0 24px 60px rgba(0, 0, 0, 0.16);
+  }
+
+  .page-repflow .card-panel {
+    background: color-mix(in srgb, var(--surface-card) 93%, rgba(251, 146, 60, 0.08));
+    border-color: rgba(251, 146, 60, 0.09);
+    box-shadow:
+      0 0 0 1px rgba(251, 146, 60, 0.04) inset,
       0 24px 60px rgba(0, 0, 0, 0.16);
   }
 
@@ -292,6 +529,11 @@
   .page-tap-tempo .phone-shot {
     background: color-mix(in srgb, var(--surface-card) 90%, rgba(163, 230, 53, 0.07));
     border-color: rgba(190, 242, 100, 0.12);
+  }
+
+  .page-repflow .phone-shot {
+    background: color-mix(in srgb, var(--surface-card) 90%, rgba(251, 146, 60, 0.07));
+    border-color: rgba(251, 146, 60, 0.12);
   }
 
   .phone-shot-primary {
@@ -365,6 +607,40 @@
     box-shadow:
       0 0 0 1px rgba(163, 230, 53, 0.1) inset,
       0 28px 82px rgba(8, 8, 16, 0.34);
+  }
+
+  .repflow-shot-primary {
+    box-shadow:
+      0 0 0 1px rgba(251, 146, 60, 0.14) inset,
+      0 30px 90px rgba(8, 8, 16, 0.42);
+  }
+
+  .repflow-shot-secondary,
+  .repflow-shot-tertiary {
+    box-shadow:
+      0 0 0 1px rgba(251, 146, 60, 0.1) inset,
+      0 28px 82px rgba(8, 8, 16, 0.34);
+  }
+
+  .repflow-feature-card,
+  .repflow-highlight-card,
+  .repflow-story-card,
+  .repflow-step-card {
+    transition:
+      border-color 260ms ease,
+      box-shadow 260ms ease,
+      background-color 260ms ease,
+      transform 260ms ease;
+  }
+
+  .repflow-feature-card:hover,
+  .repflow-highlight-card:hover,
+  .repflow-story-card:hover,
+  .repflow-step-card:hover {
+    border-color: rgba(251, 146, 60, 0.2);
+    box-shadow:
+      0 0 0 1px rgba(251, 146, 60, 0.1) inset,
+      0 0 40px rgba(249, 115, 22, 0.1);
   }
 
   .taptempo-feature-card,
@@ -484,6 +760,12 @@
     color: #081106;
     background: linear-gradient(90deg, #d9f99d 0%, #a3e635 48%, #65a30d 100%);
     box-shadow: 0 18px 48px rgba(132, 204, 22, 0.28);
+  }
+
+  .page-repflow .btn-primary {
+    color: #2a1208;
+    background: linear-gradient(90deg, #fed7aa 0%, #fb923c 48%, #f43f5e 100%);
+    box-shadow: 0 18px 48px rgba(249, 115, 22, 0.28);
   }
 
   .btn-primary:hover {
